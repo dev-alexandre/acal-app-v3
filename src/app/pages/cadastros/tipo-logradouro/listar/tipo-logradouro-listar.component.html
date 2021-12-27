@@ -6,33 +6,42 @@
 
   <nb-card-body>
     <table class="table table-bordered">
+
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
+          <th scope="col">Tipo Logradouro</th>
+          <th scope="col" colspan="2">Ações</th>
         </tr>
       </thead>
+
+      <thead>
+        <tr>
+          <th scope="col">
+            <input type="text" nbInput fullWidth placeholder="Full width">
+          </th>
+
+          <th scope="col">
+            <input type="text" nbInput fullWidth placeholder="Full width">
+          </th>
+
+          <th scope="col" colspan="2">
+            <button nbButton outline fullWidth status="success">
+              Adicionar
+            </button>
+          </th>
+        </tr>
+      </thead>
+
       <tbody>
         <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td colspan="2">Larry the Bird</td>
-          <td>@twitter</td>
+          <th>1</th>
+          <td>Avenida</td>
+          <td><button nbButton outline fullWidth status="info">Info</button></td>
+          <td><button nbButton outline fullWidth status="danger">Danger</button></td>
         </tr>
       </tbody>
+
     </table>
   </nb-card-body>
 
