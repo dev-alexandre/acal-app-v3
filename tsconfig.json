@@ -1,6 +1,14 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+
+    "baseUrl": "src",
+    "paths": {
+      "@env/*": ["environments/*"],
+      "@app/*": ["app/*"],
+      "@model/*": ["app/shared/model*"]
+    },
+
     "importHelpers": true,
     "module": "es2020",
     "outDir": "./dist/out-tsc",
