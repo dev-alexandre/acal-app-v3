@@ -20,4 +20,12 @@ export class TipoLogradouroService {
     return this.http.get<AddressType[]>(this.uri + `/listar`);
   }
 
+  salvar(addressType: AddressType): Observable<AddressType> {
+    return this.http.post<AddressType>(this.uri, addressType);
+  }
+
+  deletar(id: number): Observable<AddressType> {
+    return this.http.delete(`${this.uri}/${id}`);
+  }
+
 }

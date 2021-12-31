@@ -42,6 +42,7 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
     NbEvaIconsModule,
+    NbToastrModule.forRoot(),
   ],
   bootstrap: [AppComponent],
 })

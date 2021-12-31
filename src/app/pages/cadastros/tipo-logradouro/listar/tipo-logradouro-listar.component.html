@@ -2,7 +2,7 @@
   [nbSpinner]="loading"
   nbSpinnerStatus="primary"
   nbSpinnerSize="large"
-  nbSpinnerMessage="">
+  nbSpinnerMessage="Carregando">
 
   <nb-card-header>
     Tipo Logradouro
@@ -76,8 +76,9 @@
           </th>
 
           <th colspan="2">
-            <button nbButton outline fullWidth status="success">
-              <nb-icon icon="plus-circle-outline"></nb-icon>
+            <button nbButton outline fullWidth status="success" (click)="adicionar()">
+              <nb-icon icon="plus-circle-outline">
+              </nb-icon>
             </button>
           </th>
         </tr>
@@ -89,14 +90,14 @@
           <td class="align-middle"> {{item.name}} </td>
 
           <td>
-            <button nbButton outline fullWidth status="info">
+            <button nbButton outline fullWidth status="warning" (click)="navegar('editar', item)" >
               <nb-icon icon="edit-2-outline">
               </nb-icon>
             </button>
           </td>
 
           <td>
-            <button nbButton outline fullWidth status="danger">
+            <button nbButton outline fullWidth status="danger" (click)="navegar('deletar', item)">
               <nb-icon icon="trash-2-outline"></nb-icon>
             </button>
           </td>
