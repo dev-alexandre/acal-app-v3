@@ -8,11 +8,16 @@ export const routes: Routes = [
     component: CadastrosComponent,
     children: [
       {
-        path: 'tipo-logradouro',
-        loadChildren: () => import('./tipo-logradouro/tipo-lograduro.module')
-          .then(m => m.TipoLogradouroModule),
+        path: 'address-type',
+        loadChildren: () => import('./address-type/address-type.module')
+          .then(m => m.AddressTypeModule),
       },
-    ]
+      {
+        path: 'address',
+        loadChildren: () => import('./address/address.module')
+          .then(m => m.AddressModule),
+      },
+    ],
   },
 
 ];

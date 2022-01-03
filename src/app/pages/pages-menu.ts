@@ -7,7 +7,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'Tipo Logradouro',
-        link: '/pages/cadastros/tipo-logradouro',
+        link: '/pages/cadastros/address-type',
+      },
+      {
+        title: 'Logradouro',
+        link: '/pages/cadastros/address',
       },
     ],
   },

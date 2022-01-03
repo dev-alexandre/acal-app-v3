@@ -9,8 +9,8 @@ import { CadastrosComponent } from './cadastros.component';
     CadastrosRoutingModule,
   ],
   declarations: [
-    CadastrosComponent
-  ]
+    CadastrosComponent,
+  ],
 })
 export class CadastrosModule {
 

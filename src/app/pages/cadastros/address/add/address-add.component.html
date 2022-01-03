@@ -1,0 +1,76 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="needs-validation" novalidate [nbSpinner]="loading">
+  <nb-card accent="success">
+
+    <nb-card-header>
+      Logradouro
+    </nb-card-header>
+
+    <nb-card-body>
+      <div class="form-row">
+        <div class="col-3">
+
+            <label for="name" class="label">Tipo</label>
+
+            <nb-select
+              fullWidth
+              [formControl]="addressType"
+              [status]="(!submitted?
+               'basic': (name.valid)? 'success':'danger' ) ">
+
+              <nb-option [value]='null'>
+                Selecione
+              </nb-option>
+
+              <nb-option *ngFor="let addressType of addressTypes" [value]=addressType>
+                {{addressType.name}}
+              </nb-option>
+            </nb-select>
+
+            <div *ngIf="addressType.invalid && submitted">
+
+              <div *ngIf="addressType.errors?.['required']">
+                Tipo é obrigatório.
+              </div>
+
+          </div>
+
+        </div>
+
+        <div class="col-9">
+          <label for="name" class="label">Nome</label>
+          <input
+            id="name"
+            nbInput
+            type="text"
+            fullWidth
+            [formControl]="name"
+            placeholder="Nome"
+            [status]="(!submitted? 'basic': (name.valid)? 'success':'danger' ) "
+            >
+
+          <div *ngIf="name.invalid && submitted">
+
+            <div *ngIf="name.errors?.['required']">
+              Nome é obrigatório.
+            </div>
+
+            <div *ngIf="name.errors?.['minlength']">
+              Nome deve ter pelo menos 4 caracteres
+            </div>
+
+            <div *ngIf="name.errors?.['maxlength']">
+              Nome deve ter no maximo 100 caracteres
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </nb-card-body>
+
+    <nb-card-footer>
+      <button type="button" nbButton status="basic" (click)="voltar()">Voltar</button>
+      <button type="submit" nbButton status="success" class="float-right">Salvar</button>
+    </nb-card-footer>
+
+  </nb-card>
+</form>

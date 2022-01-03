@@ -23,9 +23,9 @@ export class Pageable {
   unpaged: boolean;
 }
 
-export class Filter {
+export class Filter<T extends AbstractModel> {
   page: Page;
-  model: AbstractModel = {};
+  model: T = null;
   sort: Sort = {value: null, asc: null};
 }
 
