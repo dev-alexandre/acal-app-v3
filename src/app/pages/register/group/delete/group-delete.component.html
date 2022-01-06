@@ -1,0 +1,58 @@
+  <nb-card accent="danger">
+
+    <nb-card-header>
+      Logradouro
+    </nb-card-header>
+
+    <nb-card-body>
+
+      <div class="form-row" *ngIf="loaded">
+        <div class="col-6">
+
+          <label for="Número" class="label">Categoria</label>
+          <input
+            nbInput
+            id="numero"
+            type="text"
+            fullWidth
+            [value]="data.category"
+            disabled
+            >
+        </div>
+
+        <div class="col-3">
+          <label class="label">Nome</label>
+          <input
+            nbInput
+            type="text"
+            fullWidth
+            [value]="data.name"
+            disabled
+            >
+
+        </div>
+
+        <div class="col-3">
+          <label  class="label">Valor</label>
+          <input
+            nbInput
+            type="text"
+            fullWidth
+            [(ngModel)]="data.monetaryValue"
+            [prefix]="'R$ '"
+            [mask]="'0*.00'"
+            [thousandSeparator]="'.'"
+            disabled
+
+            >
+
+        </div>
+      </div>
+    </nb-card-body>
+
+    <nb-card-footer>
+      <button type="button" nbButton status="basic" (click)="voltar()">Voltar</button>
+      <button type="submit" nbButton status="danger" class="float-right" (click)="deletar()">Deletar</button>
+    </nb-card-footer>
+
+  </nb-card>

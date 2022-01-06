@@ -4,7 +4,6 @@ import { NbToastrService } from '@nebular/theme';
 import { AbstractModel } from '../abstract-model';
 import { Service } from './service';
 
-
 export class AddComponent <T extends AbstractModel> {
 
   public loading: boolean = false;

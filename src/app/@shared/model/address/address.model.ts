@@ -3,6 +3,6 @@ import { AddressType } from '../address-type/address-type.model';
 
 export class Address extends AbstractModel {
 
-  addressType: AddressType = {};
+  addressType?: AddressType = {};
 
 }

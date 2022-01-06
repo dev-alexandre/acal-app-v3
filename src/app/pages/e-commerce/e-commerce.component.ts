@@ -5,4 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: './e-commerce.component.html',
 })
 export class ECommerceComponent {
+
 }

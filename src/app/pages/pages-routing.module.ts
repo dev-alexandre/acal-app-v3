@@ -6,7 +6,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 
-const routes: Routes = [{
+const routes: Routes = [
+  {
   path: '',
   component: PagesComponent,
   children: [
@@ -19,9 +20,9 @@ const routes: Routes = [{
       component: DashboardComponent,
     },
     {
-      path: 'cadastros',
-      loadChildren: () => import('./cadastros/cadastros.module')
-        .then(m => m.CadastrosModule),
+      path: 'register',
+      loadChildren: () => import('./register/register.module')
+        .then(m => m.RegisterModule),
     },
     {
       path: 'layout',
@@ -72,11 +73,6 @@ const routes: Routes = [{
       path: 'miscellaneous',
       loadChildren: () => import('./miscellaneous/miscellaneous.module')
         .then(m => m.MiscellaneousModule),
-    },
-    {
-      path: '',
-      redirectTo: 'dashboard',
-      pathMatch: 'full',
     },
     {
       path: '**',

@@ -1,0 +1,57 @@
+  <nb-card accent="danger">
+
+    <nb-card-header>
+      Logradouro
+    </nb-card-header>
+
+    <nb-card-body>
+
+      <div class="form-row">
+        <div class="col-6">
+
+          <label for="Número" class="label">Logradouro</label>
+          <input
+            nbInput
+            id="numero"
+            type="text"
+            fullWidth
+            [value]="addressLabel"
+            disabled
+            >
+        </div>
+
+        <div class="col-3">
+          <label for="Número" class="label">Número</label>
+          <input
+            nbInput
+            id="numero"
+            type="text"
+            fullWidth
+            [value]="data.number"
+            disabled
+            >
+
+        </div>
+
+        <div class="col-3">
+          <label for="Letra" class="label">Letra</label>
+          <input
+            id="letter"
+            nbInput
+            type="text"
+            fullWidth
+            [value]="data.letter"
+            disabled
+            >
+
+        </div>
+      </div>
+
+    </nb-card-body>
+
+    <nb-card-footer>
+      <button type="button" nbButton status="basic" (click)="voltar()">Voltar</button>
+      <button type="submit" nbButton status="danger" class="float-right" (click)="deletar()">Deletar</button>
+    </nb-card-footer>
+
+  </nb-card>

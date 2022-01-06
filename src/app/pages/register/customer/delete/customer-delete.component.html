@@ -1,0 +1,29 @@
+<nb-card accent="danger">
+
+    <nb-card-header>
+      Cliente
+    </nb-card-header>
+
+    <nb-card-body>
+
+      <div class="form-group" *ngIf="data">
+        <label for="name" class="label">Nome</label>
+        <!--
+          <input
+          nbInput
+          type="text"
+          fullWidth
+          disabled
+          [value]="data.addressType.name + ' ' + data.name"
+          >
+        -->
+      </div>
+
+    </nb-card-body>
+
+    <nb-card-footer>
+      <button type="button" nbButton status="basic" (click)="voltar()">Voltar</button>
+      <button type="submit" nbButton status="danger" class="float-right" (click)="deletar()">Deletar</button>
+    </nb-card-footer>
+
+  </nb-card>

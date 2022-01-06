@@ -1,16 +1,8 @@
-/**
- * @license
- * Copyright Akveo. All Rights Reserved.
- * Licensed under the MIT License. See License.txt in the project root for license information.
- */
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { CoreModule } from './@core/core.module';
-import { ThemeModule } from './@theme/theme.module';
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
+import { NbEvaIconsModule } from '@nebular/eva-icons';
 import {
   NbChatModule,
   NbDatepickerModule,
@@ -18,14 +10,26 @@ import {
   NbMenuModule,
   NbSidebarModule,
   NbToastrModule,
-  NbWindowModule,
+  NbWindowModule
 } from '@nebular/theme';
-import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { NgxMaskModule } from 'ngx-mask';
+import { CoreModule } from './@core/core.module';
+import { ThemeModule } from './@theme/theme.module';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+
+import {LOCALE_ID, DEFAULT_CURRENCY_CODE} from '@angular/core';
+import {registerLocaleData} from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+
+registerLocaleData(localePt, 'pt');
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [
+  declarations: [
+    AppComponent,
+  ],
 
+  imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -43,8 +47,21 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     ThemeModule.forRoot(),
     NbEvaIconsModule,
     NbToastrModule.forRoot(),
+    NgxMaskModule.forRoot(),
+  ],
+  providers: [
+    {
+      provide: LOCALE_ID,
+      useValue: 'pt',
+    },
+    {
+        provide:  DEFAULT_CURRENCY_CODE,
+        useValue: 'BRL',
+    },
   ],
   bootstrap: [AppComponent],
 })
+
 export class AppModule {
 }
+

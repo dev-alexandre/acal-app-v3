@@ -1,0 +1,168 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="needs-validation" novalidate [nbSpinner]="loading">
+  <nb-card accent="success">
+
+    <nb-card-header>
+      Cliente: (Pessoa {{(personType? 'Fisíca':'Jurídica')}})
+    </nb-card-header>
+
+    <nb-card-body>
+      <div class="form-row">
+        <div class="col-md-9 col-12">
+
+            <label for="name" class="label">Nome</label>
+
+            <input
+              id="name"
+              nbInput
+              type="text"
+              fullWidth
+              [formControl]="name"
+              placeholder="Nome"
+              [status]="(!submitted? 'basic': (name.valid)? 'success':'danger' ) "
+            >
+
+            <div *ngIf="name.invalid && submitted">
+
+              <div *ngIf="name.errors?.['required']">
+                Nome é obrigatório.
+              </div>
+
+              <div *ngIf="name.errors?.['minlength']">
+                Nome deve ter pelo menos 4 caracteres
+              </div>
+
+              <div *ngIf="name.errors?.['maxlength']">
+                Nome deve ter no maximo 100 caracteres
+              </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-3 col-12">
+          <label for="document" class="label">Documento {{(personType? 'C.P.F':'C.N.P.J')}}</label>
+
+          <nb-form-field>
+            <input
+              id="document"
+              nbInput
+              type="text"
+              fullWidth
+              [mask]="(personType? '000.000.000-00':'00.000.000/0000-00')"
+              [formControl]="document"
+              placeholder="Documento"
+              [status]="(!submitted? 'basic': (document.valid)? 'success':'danger' ) "
+            >
+
+            <button nbSuffix nbButton ghost (click)="togglePersonType()" type="button">
+              <nb-icon
+                pack="eva"
+                [icon]="personType ? 'person-outline' : 'clipboard-outline'"
+                >
+              </nb-icon>
+            </button>
+
+          </nb-form-field>
+
+
+          <div *ngIf="document.invalid && submitted">
+
+            <div *ngIf="document.errors?.['required']">
+              Documento é obrigatório.
+            </div>
+
+            <div *ngIf="document.errors?.['minlength']">
+              Documento deve ter pelo menos 4 caracteres
+            </div>
+
+            <div *ngIf="document.errors?.['maxlength']">
+              Documento deve ter no maximo 100 caracteres
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-12" *ngIf="!personType">
+          <label for="businessName" class="label">Nome Comercial</label>
+            <input
+              id="businessName"
+              nbInput
+              type="text"
+              fullWidth
+              [formControl]="businessName"
+              placeholder="Nome Comercial"
+              [status]="(!submitted? 'basic': (businessName.valid)? 'success':'danger' ) "
+            >
+        </div>
+
+        <div class="col-md-6 col-12">
+          <label for="phoneNumber" class="label">Telefone</label>
+
+            <input
+              id="phoneNumber"
+              nbInput
+              type="text"
+              fullWidth
+              [mask]='"(00) 00000-0000"'
+              [formControl]="phoneNumber"
+              placeholder="Telefone"
+              [status]="(!submitted? 'basic': (phoneNumber.valid)? 'success':'danger' ) "
+            >
+
+          <div *ngIf="phoneNumber.invalid && submitted">
+
+            <div *ngIf="phoneNumber.errors?.['required']">
+              Documento é obrigatório.
+            </div>
+
+            <div *ngIf="phoneNumber.errors?.['minlength']">
+              Documento deve ter pelo menos 4 caracteres
+            </div>
+
+            <div *ngIf="phoneNumber.errors?.['maxlength']">
+              Documento deve ter no maximo 100 caracteres
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-md-6 col-12">
+          <label for="birthDate" class="label">Data de  {{(personType? 'Nascimento':'Abertura')}}</label>
+
+            <input
+              id="birthDate"
+              nbInput
+              type="text"
+              fullWidth
+              [mask]='"00/00/0000"'
+              [formControl]="birthDate"
+              placeholder="Data de nascimento"
+              [status]="(!submitted? 'basic': (birthDate.valid)? 'success':'danger' ) "
+            >
+
+          <div *ngIf="birthDate.invalid && submitted">
+
+            <div *ngIf="birthDate.errors?.['required']">
+              Documento é obrigatório.
+            </div>
+
+            <div *ngIf="birthDate.errors?.['minlength']">
+              Documento deve ter pelo menos 4 caracteres
+            </div>
+
+            <div *ngIf="birthDate.errors?.['maxlength']">
+              Documento deve ter no maximo 100 caracteres
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </nb-card-body>
+
+    <nb-card-footer>
+      <button type="button" nbButton status="basic" (click)="voltar()">Voltar</button>
+      <button type="submit" nbButton status="success" class="float-right">Salvar</button>
+    </nb-card-footer>
+
+  </nb-card>
+</form>

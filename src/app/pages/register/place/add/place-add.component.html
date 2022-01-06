@@ -1,0 +1,108 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="needs-validation" novalidate [nbSpinner]="loading">
+  <nb-card accent="success">
+
+    <nb-card-header>
+      Matrícula
+    </nb-card-header>
+
+    <nb-card-body>
+      <div class="form-row">
+        <div class="col-6">
+
+            <label for="name" class="label">Logradouro</label>
+            <nb-select
+              fullWidth
+              placeholder="Logradouro"
+              [formControl]="address"
+              [status]="(!submitted?
+              'basic': (address.valid)? 'success':'danger' ) ">
+
+              <nb-option [value]=null>
+                Selecione
+              </nb-option>
+
+              <nb-option *ngFor="let address of addresses" [value]=address>
+                {{address | address}}
+              </nb-option>
+
+            </nb-select>
+
+              <div *ngIf="address.invalid && submitted">
+
+                <div *ngIf="address.errors?.['required']">
+                  Endereço é obrigatório.
+                </div>
+
+              </div>
+
+        </div>
+
+        <div class="col-3">
+          <label for="Número" class="label">Número</label>
+          <input
+            id="numero"
+            nbInput
+            type="text"
+            fullWidth
+            [formControl]="number"
+            placeholder="Número"
+            [status]="(!submitted? 'basic': (number.valid)? 'success':'danger' ) "
+            >
+
+          <div *ngIf="number.invalid && submitted">
+
+            <div *ngIf="number.errors?.['required']">
+              Número é obrigatório.
+            </div>
+
+            <div *ngIf="number.errors?.['minlength']">
+              Nome deve ter pelo menos 1 caracteres
+            </div>
+
+            <div *ngIf="number.errors?.['maxlength']">
+              Nome deve ter no maximo 4 caracteres
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-3">
+          <label for="Letra" class="label">Letra</label>
+          <input
+            id="letter"
+            nbInput
+            type="text"
+            fullWidth
+            [formControl]="letter"
+            placeholder="Letra"
+            [status]="(!submitted? 'basic': (letter.valid)? 'success':'danger' ) "
+            >
+
+          <div *ngIf="letter.invalid && submitted">
+
+            <div *ngIf="letter.errors?.['required']">
+              Número é obrigatório.
+            </div>
+
+            <div *ngIf="letter.errors?.['minlength']">
+              Letra deve ter pelo menos 1 caracteres
+            </div>
+
+            <div *ngIf="letter.errors?.['maxlength']">
+              Nome deve ter no maximo 4 caracteres
+            </div>
+
+          </div>
+        </div>
+
+
+      </div>
+    </nb-card-body>
+
+    <nb-card-footer>
+      <button type="button" nbButton status="basic" (click)="voltar()">Voltar</button>
+      <button type="submit" nbButton status="success" class="float-right">Salvar</button>
+    </nb-card-footer>
+
+  </nb-card>
+</form>

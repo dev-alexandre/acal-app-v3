@@ -7,11 +7,23 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'Tipo Logradouro',
-        link: '/pages/cadastros/address-type',
+        link: '/pages/register/address-type',
       },
       {
         title: 'Logradouro',
-        link: '/pages/cadastros/address',
+        link: '/pages/register/address',
+      },
+      {
+        title: 'Matrícula',
+        link: '/pages/register/place',
+      },
+      {
+        title: 'Grupos',
+        link: '/pages/register/group',
+      },
+      {
+        title: 'Cliente',
+        link: '/pages/register/customer',
       },
     ],
   },

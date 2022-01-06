@@ -8,6 +8,7 @@ export abstract class  DeleteComponent<T extends AbstractModel>  {
   public data: T;
   public abstract key(): string;
   private path: string = `${this.key()}[deletar]`;
+  public loaded: boolean = false;
 
   constructor(
     public router: Router,
@@ -22,8 +23,9 @@ export abstract class  DeleteComponent<T extends AbstractModel>  {
       this.voltar();
     }
 
-    this.data = JSON.parse( sessionStorage.getItem(this.path));
+    this.data = JSON.parse(sessionStorage.getItem(this.path));
     sessionStorage.removeItem(this.path);
+    this.loaded = true;
   }
 
   public voltar(): void {

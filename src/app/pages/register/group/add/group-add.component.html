@@ -1,0 +1,124 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="needs-validation" novalidate [nbSpinner]="loading">
+  <nb-card accent="success">
+
+    <nb-card-header>
+      Grupos
+    </nb-card-header>
+
+    <nb-card-body>
+      <div class="form-row">
+        <div class="col-6">
+
+            <label for="name" class="label">Categoria</label>
+            <nb-select
+              fullWidth
+              placeholder="Categoria"
+              [formControl]="category"
+              [status]="(!submitted?
+              'basic': (category.valid)? 'success':'danger' ) ">
+
+              <nb-option [value]=null>
+                Selecione
+              </nb-option>
+
+              <nb-option [value]=null>
+                Selecione
+              </nb-option>
+
+              <nb-option [value]='"FOUNDER"'>
+                Sócio Fundador
+              </nb-option>
+
+              <nb-option [value]='"EFFECTIVE"'>
+                Sócio Efetivo
+              </nb-option>
+
+              <nb-option [value]='"TEMPORARY"'>
+                Sócio Temporário
+              </nb-option>
+
+
+            </nb-select>
+
+            <div *ngIf="category.invalid && submitted">
+
+              <div *ngIf="category.errors?.['required']">
+                Endereço é obrigatório.
+              </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-3">
+          <label for="name" class="label">Nome</label>
+          <input
+            id="name"
+            nbInput
+            type="text"
+            fullWidth
+            [formControl]="name"
+            placeholder="Nome"
+            [status]="(!submitted? 'basic': (name.valid)? 'success':'danger' ) "
+            >
+
+          <div *ngIf="name.invalid && submitted">
+
+            <div *ngIf="name.errors?.['required']">
+              Número é obrigatório.
+            </div>
+
+            <div *ngIf="name.errors?.['minlength']">
+              Nome deve ter pelo menos 1 caracteres
+            </div>
+
+            <div *ngIf="name.errors?.['maxlength']">
+              Nome deve ter no maximo 100 caracteres
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-3">
+          <label for="monetaryValue" class="label">Valor</label>
+          <input
+            id="monetaryValue"
+            nbInput
+            type="text"
+            prefix="R$ "
+            mask="separator.2"
+            thousandSeparator="."
+            fullWidth
+            [formControl]="monetaryValue"
+            placeholder="Valor"
+            [status]="(!submitted? 'basic': (monetaryValue.valid)? 'success':'danger' ) "
+            >
+
+          <div *ngIf="monetaryValue.invalid && submitted">
+
+            <div *ngIf="monetaryValue.errors?.['required']">
+              Número é obrigatório.
+            </div>
+
+            <div *ngIf="monetaryValue.errors?.['minlength']">
+              Letra deve ter pelo menos 1 caracteres
+            </div>
+
+            <div *ngIf="monetaryValue.errors?.['maxlength']">
+              Nome deve ter no maximo 4 caracteres
+            </div>
+
+          </div>
+        </div>
+
+
+      </div>
+    </nb-card-body>
+
+    <nb-card-footer>
+      <button type="button" nbButton status="basic" (click)="voltar()">Voltar</button>
+      <button type="submit" nbButton status="success" class="float-right">Salvar</button>
+    </nb-card-footer>
+
+  </nb-card>
+</form>

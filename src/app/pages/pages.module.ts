@@ -10,16 +10,17 @@ import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 
 @NgModule({
   imports: [
-    PagesRoutingModule,
     ThemeModule,
     NbMenuModule,
     DashboardModule,
     ECommerceModule,
     MiscellaneousModule,
+    PagesRoutingModule,
   ],
   declarations: [
     PagesComponent,
   ],
 })
 export class PagesModule {
+
 }
