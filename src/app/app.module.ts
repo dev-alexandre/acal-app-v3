@@ -48,6 +48,7 @@ registerLocaleData(localePt, 'pt');
     NbEvaIconsModule,
     NbToastrModule.forRoot(),
     NgxMaskModule.forRoot(),
+    NbDialogModule.forRoot(),
   ],
   providers: [
     {

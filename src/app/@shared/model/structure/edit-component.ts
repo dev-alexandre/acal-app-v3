@@ -32,7 +32,7 @@ export abstract class EditComponent<T extends AbstractModel> {
       return;
     }
 
-    this.service.save(this.form.value).subscribe(
+    this.service.update(this.form.value).subscribe(
       () => {
         this.voltar();
       },

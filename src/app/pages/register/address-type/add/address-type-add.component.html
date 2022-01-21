@@ -27,11 +27,11 @@
         </div>
 
         <div *ngIf="name.errors?.['minlength']">
-          Nome deve ter pelo menos 4 caracteres
+          Nome deve ter pelo menos {{name.errors['minlength']?.requiredLength}} caracteres
         </div>
 
         <div *ngIf="name.errors?.['maxlength']">
-          Nome deve ter no maximo 100 caracteres
+          Nome deve ter no maximo {{name.errors['maxlength'].requiredLength}} caracteres
         </div>
       </div>
 

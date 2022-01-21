@@ -33,7 +33,7 @@ export class CustomerListComponent extends ListComponent<Customer> implements On
   }
 
   key(): string {
-    return `[address]`;
+    return `[customer]`;
   }
 
 }

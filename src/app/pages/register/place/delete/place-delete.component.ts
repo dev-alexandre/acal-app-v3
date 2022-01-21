@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Place } from '@app/@shared/model/place/place.model';
 import { DeleteComponent } from '@app/@shared/model/structure/delete-component';
+import { AddressPipe } from '@app/@shared/pipe/address/address.pipe';
 import { NbToastrService } from '@nebular/theme';
 import { PlaceService } from '../service/place.service';
-import { AddressPipe } from '../../../../@shared/pipe/address.pipe';
 
 @Component({
   templateUrl: './place-delete.component.html',

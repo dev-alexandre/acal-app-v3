@@ -33,6 +33,11 @@ export const routes: Routes = [
           .then(m => m.CustomerModule),
       },
       {
+        path: 'contract',
+        loadChildren: () => import('./contract/contract.module')
+          .then(m => m.ContractModule),
+      },
+      {
         path: '',
         redirectTo: 'customer',
         pathMatch: 'full',

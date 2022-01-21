@@ -35,15 +35,15 @@
             </ng-container>
           </th>
 
-          <th class="col-7 bold" (click)="order('category')">
-            Categoria
+          <th class="col-2 bold" (click)="order('category')">
+            Categoria a
             <ng-container *ngIf="filter.sort.value === 'category'">
               <nb-icon icon="arrow-up-outline" class="float-right" *ngIf="filter.sort.asc"></nb-icon>
               <nb-icon icon="arrow-down-outline" class="float-right" *ngIf="!filter.sort.asc"></nb-icon>
             </ng-container>
           </th>
 
-          <th class="col-2 bold" (click)="order('name')">
+          <th class="col-7 bold" (click)="order('name')">
             Nome
             <ng-container *ngIf="filter.sort.value === 'name'">
               <nb-icon icon="arrow-up-outline" class="float-right" *ngIf="filter.sort.asc"></nb-icon>
@@ -59,7 +59,10 @@
             </ng-container>
           </th>
 
-          <th class="col-2 bold" class="text-center" colspan="2">Ações</th>
+          <th class="col-2 bold" class="text-center" colspan="2">
+            Ações
+          </th>
+
         </tr>
       </thead>
 
@@ -71,6 +74,7 @@
               nbInput
               fullWidth
               placeholder="#"
+              mask="0*"
               class="form-control"
               [(ngModel)]="filter.model.id"
               (keyup.enter)="seach()"
@@ -166,14 +170,14 @@
 
       <tfoot>
         <tr>
-          <th class="col-1 bold" (click)="order('id')">#
+          <th class="bold" (click)="order('id')">#
             <ng-container *ngIf="filter.sort.value === 'id'">
               <nb-icon icon="arrow-up-outline" class="float-right" *ngIf="filter.sort.asc"></nb-icon>
               <nb-icon icon="arrow-down-outline" class="float-right" *ngIf="!filter.sort.asc"></nb-icon>
             </ng-container>
           </th>
 
-          <th class="col-7 bold" (click)="order('category')">
+          <th class="bold" (click)="order('category')">
             Categoria
             <ng-container *ngIf="filter.sort.value === 'category'">
               <nb-icon icon="arrow-up-outline" class="float-right" *ngIf="filter.sort.asc"></nb-icon>
@@ -181,7 +185,7 @@
             </ng-container>
           </th>
 
-          <th class="col-2 bold" (click)="order('name')">
+          <th class="bold" (click)="order('name')">
             Nome
             <ng-container *ngIf="filter.sort.value === 'name'">
               <nb-icon icon="arrow-up-outline" class="float-right" *ngIf="filter.sort.asc"></nb-icon>
@@ -189,7 +193,7 @@
             </ng-container>
           </th>
 
-          <th class="col-2 bold" (click)="order('monetaryValue')">
+          <th class="bold" (click)="order('monetaryValue')">
             Valor
             <ng-container *ngIf="filter.sort.value === 'monetaryValue'">
               <nb-icon icon="arrow-up-outline" class="float-right" *ngIf="filter.sort.asc"></nb-icon>
@@ -197,7 +201,7 @@
             </ng-container>
           </th>
 
-          <th class="col-2 bold" class="text-center" colspan="2">Ações</th>
+          <th class="bold" class="text-center" colspan="2">Ações</th>
         </tr>
       </tfoot>
 

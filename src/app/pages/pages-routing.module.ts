@@ -78,8 +78,12 @@ const routes: Routes = [
       path: '**',
       component: NotFoundComponent,
     },
-  ],
-}];
+    ],
+  },
+  {
+    path: '', redirectTo: 'dashboard', pathMatch: 'full',
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

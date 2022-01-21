@@ -34,7 +34,7 @@ export class AddressTypeAddComponent extends AddComponent<AddressType> implement
       name: new FormControl(
         null, [
         Validators.required,
-        Validators.minLength(4),
+        Validators.minLength(3),
         Validators.maxLength(100),
       ]),
     });

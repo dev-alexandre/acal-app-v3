@@ -3,7 +3,7 @@ import { Category } from '../category/category.model';
 
 export class Group extends AbstractModel {
 
-  monetaryValue: number = null;
-  category: Category = {};
+  monetaryValue?: number = null;
+  category?: Category = {};
 
 }

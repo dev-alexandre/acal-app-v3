@@ -1,0 +1,30 @@
+<nb-form-field>
+
+  <input
+    #autoInput
+    placeholder="Selecione"
+    [nbAutocomplete]="auto"
+    fullWidth
+    nbInput
+    type="text"
+    (input)="onChange()"
+    [disabled]="selected"
+    [status]="status"
+    />
+
+  <button [status]="status" nbSuffix nbButton ghost type="button" [disabled]="!selected" (click)="clear()">
+    <nb-icon [icon]="'close-circle-outline'" pack="eva" >
+    </nb-icon>
+  </button>
+
+</nb-form-field>
+
+<nb-autocomplete #auto (selectedChange)="onSelectionChange($event)"  [handleDisplayFn]="viewHandle">
+
+  <nb-option-group *ngFor="let option of allOptions"  [title]="option.name" >
+    <nb-option *ngFor="let group of option.address" [value]="address">
+      {{ address | address}}
+    </nb-option>
+  </nb-option-group>
+
+</nb-autocomplete>

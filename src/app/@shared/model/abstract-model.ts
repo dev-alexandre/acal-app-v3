@@ -1,8 +1,8 @@
 export class AbstractModel {
 
-  id?: number = 0;
-  name?: String = '';
+  id?: number = null;
+  name?: String = null;
   createdAt?: Date = null;
   lastModifiedAt?: Date = null;
-
+  deletedAt?: Date = null;
 }

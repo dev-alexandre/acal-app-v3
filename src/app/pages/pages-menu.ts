@@ -25,6 +25,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'Cliente',
         link: '/pages/register/customer',
       },
+      {
+        title: 'Contrato',
+        link: '/pages/register/contract',
+      },
     ],
   },
   {

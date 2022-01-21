@@ -72,6 +72,7 @@
               fullWidth
               placeholder="#"
               class="form-control"
+              mask="0*"
               [(ngModel)]="filter.model.id"
               (keyup.enter)="seach()"
             >
@@ -104,6 +105,7 @@
               placeholder="Número"
               class="form-control"
               [(ngModel)]="filter.model.number"
+              mask="0*"
               (keyup.enter)="seach()"
               >
           </th>
@@ -115,6 +117,7 @@
               fullWidth
               placeholder="Letra"
               class="form-control"
+              mask="S*"
               [(ngModel)]="filter.model.letter"
               (keyup.enter)="seach()"
               >

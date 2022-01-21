@@ -13,12 +13,20 @@ export abstract class Service<T extends AbstractModel> {
     return this.http.post<Table<T>>(`${this.getUrl()}/pageable`, filtro);
   }
 
+  filterByExample(filtro: Filter<any>): Observable<T[]> {
+    return this.http.post<T[]>(`${this.getUrl()}/filter`, filtro);
+  }
+
   list(): Observable<T[]> {
     return this.http.get<T[]>(`${this.getUrl()}`);
   }
 
   save(t: T): Observable<T> {
     return this.http.post<T>(this.getUrl(), t);
+  }
+
+  update(t: T): Observable<T> {
+    return this.http.put<T>(this.getUrl(), t);
   }
 
   delete(id: number) {

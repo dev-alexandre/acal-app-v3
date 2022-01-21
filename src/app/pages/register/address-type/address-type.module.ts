@@ -16,6 +16,7 @@ import { AddressTypeDeleteComponent } from './delete/address-type-delete.compone
 import { AddressTypeEditComponent } from './edit/address-type-edit.component';
 import { AddressTypeListComponent } from './list/address-type-list.component';
 import { AddressTypeRoutingModule } from './address-type-routing.module';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
 
@@ -31,6 +32,7 @@ import { AddressTypeRoutingModule } from './address-type-routing.module';
     FormsModule,
     ReactiveFormsModule,
     AddressTypeRoutingModule,
+    NgxMaskModule.forChild(),
   ],
 
   declarations: [

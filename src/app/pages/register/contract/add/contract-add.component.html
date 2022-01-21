@@ -1,0 +1,82 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="needs-validation" novalidate [nbSpinner]="loading">
+  <nb-card accent="success">
+
+    <nb-card-header>
+      Contrato
+    </nb-card-header>
+
+    <nb-card-body>
+      <div class="form-row">
+
+        <div class="col-12">
+          <label for="name" class="label">Cliente</label>
+          <app-select-customer
+            (setValue)="setCustomer($event)"
+            [status]="(!submitted? 'basic': (customer.valid)? 'success':'danger' ) "
+            >
+          </app-select-customer>
+        </div>
+
+        <div class="col-12">
+          <label for="name" class="label">Nome Fantasia</label>
+          <input
+          id="numero"
+          nbInput
+          type="text"
+          fullWidth
+          [formControl]="nameBusiness"
+          placeholder="Nome Fantasia"
+          [status]="(!submitted? 'basic': (nameBusiness.valid)? 'success':'danger' ) "
+          >
+
+        <div *ngIf="nameBusiness.invalid && submitted">
+
+          <div *ngIf="nameBusiness.errors?.['minlength']">
+            Nome deve ter pelo menos {{nameBusiness.errors['minlength'].requiredLength}} caracteres
+          </div>
+
+          <div *ngIf="nameBusiness.errors?.['maxlength']">
+            Nome deve ter no maximo 4 caracteres
+          </div>
+
+        </div>
+
+        </div>
+
+        <div class="col-12">
+          <label for="name" class="label">Matrícula</label>
+          <app-select-place
+            (setValue)="setPlaceResidence($event)"
+            [status]="(!submitted? 'basic': (placeResidence.valid)? 'success':'danger' ) "
+            >
+          </app-select-place>
+        </div>
+
+        <div class="col-12">
+          <label for="name" class="label">Matrícula de correspondência</label>
+          <app-select-place
+          (setValue)="setPlaceMail($event)"
+          [status]="(!submitted? 'basic': (placeMail.valid)? 'success':'danger' ) "
+          >
+        </app-select-place>
+        </div>
+
+        <div class="col-12">
+          <label for="name" class="label">Grupo</label>
+          <app-select-group
+            (setValue)="setGroup($event)"
+            [status]="(!submitted? 'basic': (group.valid)? 'success':'danger' ) "
+          >
+          </app-select-group>
+        </div>
+
+      </div>
+    </nb-card-body>
+
+    <nb-card-footer>
+      <button type="button" nbButton status="basic" (click)="voltar()">Voltar</button>
+      <button type="submit" nbButton status="success" class="float-right">Salvar</button>
+    </nb-card-footer>
+
+  </nb-card>
+</form>

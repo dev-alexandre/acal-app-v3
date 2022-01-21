@@ -3,7 +3,7 @@ import { Filter, Table } from '@app/@shared/model/table/table-model';
 import { AbstractModel } from '../abstract-model';
 import { Service } from './service';
 
-export abstract class  ListComponent<T extends AbstractModel> {
+export abstract class ListComponent<T extends AbstractModel> {
 
   table: Table<T>;
   filter: Filter<T>;

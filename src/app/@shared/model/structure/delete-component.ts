@@ -35,7 +35,7 @@ export abstract class  DeleteComponent<T extends AbstractModel>  {
   public deletar(): void {
     this.service.delete(this.data.id).subscribe(
       () => {
-        this.showToast(`registro deletado`);
+        this.toastrService.success('Completado', `registro deletado`);
         this.voltar();
       },
       (error) => {

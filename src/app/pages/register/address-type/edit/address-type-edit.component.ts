@@ -15,7 +15,6 @@ export class AddressTypeEditComponent extends EditComponent<AddressType> impleme
       return `[address-type]`;
   }
 
-
   constructor(
     public router: Router,
     public activeRouter: ActivatedRoute,
@@ -45,7 +44,7 @@ export class AddressTypeEditComponent extends EditComponent<AddressType> impleme
       name: new FormControl(
         addressType.name, [
         Validators.required,
-        Validators.minLength(4),
+        Validators.minLength(3),
         Validators.maxLength(100),
       ]),
 
