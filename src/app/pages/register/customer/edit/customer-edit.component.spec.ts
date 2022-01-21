@@ -9,7 +9,7 @@ describe('CustomerEditComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CustomerEditComponent ]
+      declarations: [ CustomerEditComponent ],
     })
     .compileComponents();
   });

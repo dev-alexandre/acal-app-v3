@@ -10,7 +10,7 @@ import {
   NbMenuModule,
   NbSidebarModule,
   NbToastrModule,
-  NbWindowModule
+  NbWindowModule,
 } from '@nebular/theme';
 import { NgxMaskModule } from 'ngx-mask';
 import { CoreModule } from './@core/core.module';

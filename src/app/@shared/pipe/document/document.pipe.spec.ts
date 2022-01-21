@@ -8,7 +8,7 @@ describe('DocumentPipe', () => {
 
   it('should format CPF', () => {
     const pipe = new DocumentPipe();
-    const response = pipe.transform('00000000000')
+    const response = pipe.transform('00000000000');
     expect(response).toEqual('000.000.000-00');
   });
 
