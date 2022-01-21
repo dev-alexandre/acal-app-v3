@@ -2,7 +2,14 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PipeModule } from '@app/@shared/pipe/pipe.module';
-import { NbButtonGroupModule, NbButtonModule, NbCardModule, NbIconModule, NbInputModule, NbSelectModule, NbSpinnerModule } from '@nebular/theme';
+import {
+  NbButtonGroupModule,
+  NbButtonModule,
+  NbCardModule,
+  NbIconModule,
+  NbInputModule,
+  NbSelectModule,
+  NbSpinnerModule } from '@nebular/theme';
 import { GroupAddComponent } from './add/group-add.component';
 import { GroupRoutingModule } from './group-routing.module';
 import { GroupService } from './service/group.service';

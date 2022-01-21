@@ -1,5 +1,4 @@
-import { verify } from "crypto";
-import { DocumentPipe } from "./document.pipe";
+import { DocumentPipe } from './document.pipe';
 
 describe('DocumentPipe', () => {
   it('create an instance', () => {

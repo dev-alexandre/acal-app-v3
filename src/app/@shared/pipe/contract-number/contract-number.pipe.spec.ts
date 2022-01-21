@@ -1,4 +1,4 @@
-import { ContractNumberPipe } from "./contract-number.pipe";
+import { ContractNumberPipe } from './contract-number.pipe';
 
 describe('ContractNumberPipe', () => {
   it('create an instance', () => {

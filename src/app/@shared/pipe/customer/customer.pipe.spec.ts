@@ -1,4 +1,4 @@
-import { CustomerPipe } from "./customer.pipe";
+import { CustomerPipe } from './customer.pipe';
 
 describe('CustomerPipe', () => {
   it('create an instance', () => {

@@ -9,7 +9,7 @@ describe('AddressTypeEditComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddressTypeEditComponent ]
+      declarations: [ AddressTypeEditComponent ],
     })
     .compileComponents();
   });

@@ -5,7 +5,7 @@ import { Service } from '@app/@shared/model/structure/service';
 import { environment } from '@env/environment';
 
 @Injectable()
-export class GroupService extends Service<Group>{
+export class GroupService extends Service<Group> {
 
   getUrl(): string {
     return `${environment.apiUrl}/group`;

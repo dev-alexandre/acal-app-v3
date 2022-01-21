@@ -8,7 +8,7 @@ describe('AddressTypeListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddressTypeListComponent ]
+      declarations: [ AddressTypeListComponent ],
     })
     .compileComponents();
   });
