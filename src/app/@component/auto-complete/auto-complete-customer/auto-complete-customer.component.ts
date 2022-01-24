@@ -1,14 +1,14 @@
 import { ChangeDetectionStrategy, Component, ViewChild, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Customer } from '@app/@shared/model/customer/customer.model';
-import { CustomerService } from '../../pages/register/customer/service/customer.service';
-import { SelectComponent } from '../select/select.component';
+import { CustomerService } from '@app/pages/register/customer/service/customer.service';
+import { AutoCompleteComponent } from '../auto-complete.component';
 
 @Component({
-  selector: 'app-select-customer',
-  templateUrl: './select-customer.component.html',
+  selector: 'app-auto-complete-customer',
+  templateUrl: './auto-complete-customer.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SelectCustomerComponent extends SelectComponent<Customer> {
+export class AutoCompleteCustomerComponent extends AutoCompleteComponent<Customer> {
 
   @Input()
   public status: String = 'basic';

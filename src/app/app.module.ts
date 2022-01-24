@@ -21,6 +21,7 @@ import { AppComponent } from './app.component';
 import {LOCALE_ID, DEFAULT_CURRENCY_CODE} from '@angular/core';
 import {registerLocaleData} from '@angular/common';
 import localePt from '@angular/common/locales/pt';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 registerLocaleData(localePt, 'pt');
 

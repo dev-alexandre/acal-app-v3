@@ -32,7 +32,6 @@ export class AddressAddComponent extends AddComponent<Address> implements OnInit
 
   ngOnInit(): void {
     this.createForm();
-    this.loadAddressType();
   }
 
   public createForm() {
@@ -52,11 +51,8 @@ export class AddressAddComponent extends AddComponent<Address> implements OnInit
     });
   }
 
-  public loadAddressType(): void {
-    this.addressTypeService.list()
-      .subscribe(addressTypes => {
-        this.addressTypes = addressTypes;
-      });
+  public setAddressType(addressType: AddressType): void {
+    this.addressType.setValue(addressType);
   }
 
   public get name() {

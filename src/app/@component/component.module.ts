@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { SelectCustomerComponent } from './select-customer/select-customer.component';
 import {
   NbAutocompleteModule,
   NbInputModule,
@@ -7,42 +6,59 @@ import {
   NbDialogModule,
   NbButtonModule,
   NbFormFieldModule,
-  NbIconModule } from '@nebular/theme';
+  NbIconModule,
+  NbSelectModule} from '@nebular/theme';
 import { CommonModule } from '@angular/common';
 import { CustomerService } from '../pages/register/customer/service/customer.service';
-import { SelectPlaceComponent } from './select-place/select-place.component';
 import { PlaceService } from '@app/pages/register/place/service/place.service';
 import { PipeModule } from '../@shared/pipe/pipe.module';
-import { SelectGroupComponent } from './select-group/select-group.component';
 import { GroupService } from '@app/pages/register/group/service/group.service';
 import { AddressTypeService } from '@app/pages/register/address-type/service/address-type.service';
-import { SelectAddressTypeComponent } from './select-address-type/select-address-type.component';
+import { AutoCompleteAddressTypeComponent } from './auto-complete/auto-complete-address-type/auto-complete-address-type.component';
+import { AutoCompleteCustomerComponent } from './auto-complete/auto-complete-customer/auto-complete-customer.component';
+import { AutoCompleteGroupComponent } from './auto-complete/auto-complete-group/auto-complete-group.component';
+import { AutoCompletePlaceComponent } from './auto-complete/auto-complete-place/auto-complete-place.component';
+import { SelectAddressTypeComponent } from './select/select-address-type/select-address-type.component';
+import { FormsModule } from '../pages/forms/forms.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SelectAddressComponent } from './select/select-address/select-address.component';
 
 @NgModule({
   imports: [
-    PipeModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
+
     NbCardModule,
     NbInputModule,
+    NbSelectModule,
     NbButtonModule,
-    CommonModule,
     NbAutocompleteModule,
     NbFormFieldModule,
     NbIconModule,
     NbDialogModule.forChild(),
+
+    PipeModule,
   ],
 
   declarations: [
-    SelectCustomerComponent,
-    SelectPlaceComponent,
-    SelectGroupComponent,
+    AutoCompleteCustomerComponent,
+    AutoCompletePlaceComponent,
+    AutoCompleteGroupComponent,
+    AutoCompleteAddressTypeComponent,
+
     SelectAddressTypeComponent,
+    SelectAddressComponent,
   ],
 
   exports: [
-    SelectCustomerComponent,
-    SelectPlaceComponent,
-    SelectGroupComponent,
+    AutoCompleteCustomerComponent,
+    AutoCompletePlaceComponent,
+    AutoCompleteGroupComponent,
+    AutoCompleteAddressTypeComponent,
+
     SelectAddressTypeComponent,
+    SelectAddressComponent,
   ],
 
   providers: [

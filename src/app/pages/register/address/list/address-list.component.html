@@ -73,27 +73,10 @@
           </th>
 
           <th>
-            <app-select-address-type>
-
+            <app-select-address-type
+              (setNameOnly)="setAddressType($event)"
+              >
             </app-select-address-type>
-
-            <!--
-            <nb-select
-              fullWidth
-              placeholder="Selecione"
-              (selectedChange)="seach()"
-              [(ngModel)]="filter.model.addressType"
-            >
-
-            <nb-option [value]=null>
-              Selecione
-            </nb-option>
-
-              <nb-option *ngFor="let addressType of addressTypes" [value]=addressType>
-                {{addressType.name}}
-              </nb-option>
-            </nb-select>
-            -->
           </th>
 
           <th>

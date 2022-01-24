@@ -30,7 +30,6 @@ export class AddressListComponent extends ListComponent<Address> implements OnIn
 
   ngOnInit(): void {
     this.seach();
-    this.loadAddressType();
   }
 
   public initModel(filter: Filter<Address>): void {
@@ -43,12 +42,8 @@ export class AddressListComponent extends ListComponent<Address> implements OnIn
     return `[address]`;
   }
 
-  public loadAddressType(): void {
-
-    this.addressTypeService.list()
-      .subscribe(addressTypes => {
-        this.addressTypes = addressTypes;
-      });
+  setAddressType(addressType: AddressType): void {
+    this.filter.model.addressType = addressType;
+    this.seach();
   }
-
 }

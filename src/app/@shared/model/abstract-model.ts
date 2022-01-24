@@ -5,4 +5,5 @@ export class AbstractModel {
   createdAt?: Date = null;
   lastModifiedAt?: Date = null;
   deletedAt?: Date = null;
+  deleted?: Boolean = null;
 }

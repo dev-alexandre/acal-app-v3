@@ -1,21 +1,21 @@
 import { ChangeDetectionStrategy, Component, ViewChild, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { AddressType } from '@app/@shared/model/address-type/address-type.model';
 import { Group } from '@app/@shared/model/group/group.model';
 import { Filter } from '@app/@shared/model/table/table-model';
-import { GroupPipe } from '@app/@shared/pipe/group/patner.pipe';
-import { GroupService } from '@app/pages/register/group/service/group.service';
-import { AllOptions, SelectComponent } from '../select/select.component';
+import { AddressTypeService } from '@app/pages/register/address-type/service/address-type.service';
+import { AllOptions, AutoCompleteComponent } from '../auto-complete.component';
 
 export interface Options {
   name: String;
-  groups: Group[];
+  groups: AddressType[];
 }
 
 @Component({
-  selector: 'app-select-group',
-  templateUrl: './select-group.component.html',
+  selector: 'app-auto-complete-address-type',
+  templateUrl: './auto-complete-address-type.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SelectGroupComponent extends SelectComponent<Group> {
+export class AutoCompleteAddressTypeComponent extends AutoCompleteComponent<AddressType> {
 
   @Input()
   public status: String = 'basic';
@@ -26,13 +26,13 @@ export class SelectGroupComponent extends SelectComponent<Group> {
   @ViewChild('autoInput')
   public input: any;
 
-  constructor(public service: GroupService) {
+  constructor(public service: AddressTypeService) {
     super(service);
   }
 
-  public options: Group[];
-  public allOptions: AllOptions<Group>[];
-  public filter: Filter<Group>;
+  public options: AddressType[];
+  public allOptions: AllOptions<AddressType>[];
+  public filter: Filter<AddressType>;
   public selected: Group;
 
 

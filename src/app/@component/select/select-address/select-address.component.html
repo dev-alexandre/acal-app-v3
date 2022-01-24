@@ -1,0 +1,19 @@
+<nb-select
+  fullWidth
+  placeholder="Selecione"
+  [(selected)]="selected"
+  (selectedChange)=onSelectionChange()
+  >
+
+  <nb-option [value]=null>
+    Selecione
+  </nb-option>
+
+  <nb-option-group *ngFor="let option of allOptions" [title]="option.name">
+    <nb-option *ngFor="let address of option.groups" [value]="address">
+      {{address | address }}
+    </nb-option>
+  </nb-option-group>
+
+
+</nb-select>

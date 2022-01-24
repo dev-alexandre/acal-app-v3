@@ -1,0 +1,16 @@
+<nb-select
+  fullWidth
+  placeholder="Selecione"
+  [(selected)]="selected"
+  (selectedChange)=onSelectionChange()
+  >
+
+  <nb-option [value]=null>
+    Selecione
+  </nb-option>
+
+  <nb-option *ngFor="let addressType of options" [value]=addressType>
+    {{addressType.name }}
+  </nb-option>
+
+</nb-select>

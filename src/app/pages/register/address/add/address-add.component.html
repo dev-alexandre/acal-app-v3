@@ -11,20 +11,8 @@
 
             <label for="name" class="label">Tipo</label>
 
-            <nb-select
-              fullWidth
-              [formControl]="addressType"
-              [status]="(!submitted?
-               'basic': (name.valid)? 'success':'danger' ) ">
-
-              <nb-option [value]='null'>
-                Selecione
-              </nb-option>
-
-              <nb-option *ngFor="let addressType of addressTypes" [value]=addressType>
-                {{addressType.name}}
-              </nb-option>
-            </nb-select>
+            <app-select-address-type (setValue)="setAddressType($event)">
+            </app-select-address-type>
 
             <div *ngIf="addressType.invalid && submitted">
 

@@ -1,4 +1,4 @@
-import { Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 import { AbstractModel } from '@app/@shared/model/abstract-model';
 import { Service } from '@app/@shared/model/structure/service';
 import { Filter } from '@app/@shared/model/table/table-model';
@@ -8,7 +8,7 @@ export interface AllOptions<T extends AbstractModel> {
   groups: T[];
 }
 
-export abstract class SelectComponent<T extends AbstractModel> {
+export abstract class AutoCompleteComponent<T extends AbstractModel> {
 
   public options: T[] = [];
   public allOptions: AllOptions<T>[] = [];

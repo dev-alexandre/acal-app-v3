@@ -10,11 +10,11 @@
 
         <div class="col-12">
           <label for="name" class="label">Cliente</label>
-          <app-select-customer
+          <app-auto-complete-customer
             (setValue)="setCustomer($event)"
             [status]="(!submitted? 'basic': (customer.valid)? 'success':'danger' ) "
             >
-          </app-select-customer>
+          </app-auto-complete-customer>
         </div>
 
         <div class="col-12">
@@ -45,29 +45,29 @@
 
         <div class="col-12">
           <label for="name" class="label">Matrícula</label>
-          <app-select-place
+          <app-auto-complete-place
             (setValue)="setPlaceResidence($event)"
             [status]="(!submitted? 'basic': (placeResidence.valid)? 'success':'danger' ) "
             >
-          </app-select-place>
+          </app-auto-complete-place>
         </div>
 
         <div class="col-12">
           <label for="name" class="label">Matrícula de correspondência</label>
-          <app-select-place
+          <app-auto-complete-place
           (setValue)="setPlaceMail($event)"
           [status]="(!submitted? 'basic': (placeMail.valid)? 'success':'danger' ) "
           >
-        </app-select-place>
+        </app-auto-complete-place>
         </div>
 
         <div class="col-12">
           <label for="name" class="label">Grupo</label>
-          <app-select-group
+          <app-auto-complete-group
             (setValue)="setGroup($event)"
             [status]="(!submitted? 'basic': (group.valid)? 'success':'danger' ) "
           >
-          </app-select-group>
+          </app-auto-complete-group>
         </div>
 
       </div>

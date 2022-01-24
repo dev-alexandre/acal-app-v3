@@ -2,14 +2,14 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewCh
 import { Place } from '@app/@shared/model/place/place.model';
 import { Filter } from '@app/@shared/model/table/table-model';
 import { PlaceService } from '@app/pages/register/place/service/place.service';
-import { AllOptions, SelectComponent } from '../select/select.component';
+import { AutoCompleteComponent, AllOptions } from '../auto-complete.component';
 
 @Component({
-  selector: 'app-select-place',
-  templateUrl: './select-place.component.html',
+  selector: 'app-auto-complete-place',
+  templateUrl: './auto-complete-place.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SelectPlaceComponent  extends SelectComponent<Place> {
+export class AutoCompletePlaceComponent extends AutoCompleteComponent<Place> {
 
   @Input()
   public status: String = 'basic';

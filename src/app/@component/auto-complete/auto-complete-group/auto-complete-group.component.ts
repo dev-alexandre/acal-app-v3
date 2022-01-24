@@ -1,11 +1,8 @@
-import { ChangeDetectionStrategy, Component, ViewChild, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { AddressType } from '@app/@shared/model/address-type/address-type.model';
+import { ChangeDetectionStrategy, Component, ViewChild, Output, EventEmitter, Input } from '@angular/core';
 import { Group } from '@app/@shared/model/group/group.model';
 import { Filter } from '@app/@shared/model/table/table-model';
-import { GroupPipe } from '@app/@shared/pipe/group/patner.pipe';
-import { AddressTypeService } from '@app/pages/register/address-type/service/address-type.service';
 import { GroupService } from '@app/pages/register/group/service/group.service';
-import { AllOptions, SelectComponent } from '../select/select.component';
+import { AllOptions, AutoCompleteComponent } from '../auto-complete.component';
 
 export interface Options {
   name: String;
@@ -13,11 +10,11 @@ export interface Options {
 }
 
 @Component({
-  selector: 'app-select-address-type',
-  templateUrl: './select-address-type.component.html',
+  selector: 'app-auto-complete-group',
+  templateUrl: './auto-complete-group.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SelectAddressTypeComponent extends SelectComponent<AddressType> {
+export class AutoCompleteGroupComponent extends AutoCompleteComponent<Group> {
 
   @Input()
   public status: String = 'basic';
@@ -28,15 +25,14 @@ export class SelectAddressTypeComponent extends SelectComponent<AddressType> {
   @ViewChild('autoInput')
   public input: any;
 
-  constructor(public service: AddressTypeService) {
+  constructor(public service: GroupService) {
     super(service);
   }
 
-  public options: AddressType[];
-  public allOptions: AllOptions<AddressType>[];
-  public filter: Filter<AddressType>;
+  public options: Group[];
+  public allOptions: AllOptions<Group>[];
+  public filter: Filter<Group>;
   public selected: Group;
-
 
   getEmiter(): EventEmitter<Group> {
     return this.setValue;
