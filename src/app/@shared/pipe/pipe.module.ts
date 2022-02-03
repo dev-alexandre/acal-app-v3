@@ -7,6 +7,8 @@ import { PlacePipe } from './place/place.pipe';
 import { GroupPipe } from './group/patner.pipe';
 import { CustomerPipe } from './customer/customer.pipe';
 import { ContractNumberPipe } from './contract-number/contract-number.pipe';
+import { CategoryPipe } from './category/category.pipe';
+import { MinPlacePipe } from './min-place/min-place.pipe';
 
 
 @NgModule({
@@ -20,9 +22,11 @@ import { ContractNumberPipe } from './contract-number/contract-number.pipe';
     PartnerPipe,
     DocumentPipe,
     PlacePipe,
+    MinPlacePipe,
     GroupPipe,
     CustomerPipe,
     ContractNumberPipe,
+    CategoryPipe,
   ],
 
   exports: [
@@ -30,9 +34,11 @@ import { ContractNumberPipe } from './contract-number/contract-number.pipe';
     PartnerPipe,
     DocumentPipe,
     PlacePipe,
+    MinPlacePipe,
     GroupPipe,
     CustomerPipe,
     ContractNumberPipe,
+    CategoryPipe,
   ],
 
   providers: [

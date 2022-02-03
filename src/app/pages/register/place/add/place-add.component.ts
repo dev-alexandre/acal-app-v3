@@ -32,7 +32,6 @@ export class PlaceAddComponent extends AddComponent<Place> implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-    this.loadAdress();
   }
 
   public createForm() {
@@ -60,11 +59,8 @@ export class PlaceAddComponent extends AddComponent<Place> implements OnInit {
     });
   }
 
-  public loadAdress(): void {
-    this.addressService.list().subscribe(
-      (addresses) => {
-        this.addresses = addresses;
-      });
+  public setAddress(address: Address): void {
+    this.address.setValue(address);
   }
 
   public get letter() {

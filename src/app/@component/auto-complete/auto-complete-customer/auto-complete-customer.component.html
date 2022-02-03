@@ -8,6 +8,7 @@
     nbInput
     type="text"
     (input)="onChange()"
+    (focusout)="focusOutFunction()"
     [disabled]="selected"
     [status]="status"
     />
@@ -23,7 +24,17 @@
 
   <nb-option-group *ngFor="let option of allOptions"  [title]="option.name" >
     <nb-option *ngFor="let group of option.groups" [value]="group">
-     <b>{{ group | customer }}</b>  - {{group.document | document}}
+
+      <div class="d-flex justify-content-between">
+        <b>{{ group | customer }}</b> : [{{group.document | document}}]
+      </div>
+
+    </nb-option>
+  </nb-option-group>
+
+  <nb-option-group *ngIf="size > 3 && allOptions.length === 0" [title]="'Sem dados'" >
+    <nb-option>
+      Nenhum usúario atende aos critérios estabelecidos
     </nb-option>
   </nb-option-group>
 

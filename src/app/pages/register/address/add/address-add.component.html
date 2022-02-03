@@ -9,18 +9,11 @@
       <div class="form-row">
         <div class="col-3">
 
-            <label for="name" class="label">Tipo</label>
-
-            <app-select-address-type (setValue)="setAddressType($event)">
-            </app-select-address-type>
-
-            <div *ngIf="addressType.invalid && submitted">
-
-              <div *ngIf="addressType.errors?.['required']">
-                Tipo é obrigatório.
-              </div>
-
-          </div>
+          <app-select-address-type
+            [form]="addressType"
+            [submitted]="submitted"
+            (setValue)="setAddressType($event)">
+          </app-select-address-type>
 
         </div>
 
@@ -36,7 +29,7 @@
             [status]="(!submitted? 'basic': (name.valid)? 'success':'danger' ) "
             >
 
-          <div *ngIf="name.invalid && submitted">
+          <div class="caption status-danger" *ngIf="name.invalid && submitted">
 
             <div *ngIf="name.errors?.['required']">
               Nome é obrigatório.

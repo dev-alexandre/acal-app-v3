@@ -9,35 +9,23 @@
   </nb-card-header>
 
   <nb-card-body>
-    Exibindo:
-
-    <nb-select [(ngModel)]="filter.page.size" (ngModelChange)="seach()">
-      <nb-option [value]=1>1</nb-option>
-      <nb-option [value]=5>5</nb-option>
-      <nb-option [value]=10>10</nb-option>
-      <nb-option [value]=20>20</nb-option>
-      <nb-option [value]=50>50</nb-option>
-      <nb-option [value]=100>100</nb-option>
-    </nb-select>
-
-    Registros
+    <app-select-rows-number (setValue)="setRowsSize($event)">
+    </app-select-rows-number>
   </nb-card-body>
 
   <nb-card-body>
-    <table class="table table-bordered table-striped">
+    <app-table class="table table-bordered table-striped">
 
       <thead>
         <tr>
           <th class="col-1 bold" (click)="order('id')">#
-
             <ng-container *ngIf="filter.sort.value === 'id'">
               <nb-icon icon="arrow-up-outline" class="float-right" *ngIf="filter.sort.asc"></nb-icon>
               <nb-icon icon="arrow-down-outline" class="float-right" *ngIf="!filter.sort.asc"></nb-icon>
             </ng-container>
-
           </th>
 
-          <th class="col-7 bold" (click)="order('name')">
+          <th class="col-8 bold" (click)="order('name')">
             Nome
             <ng-container *ngIf="filter.sort.value === 'name'">
               <nb-icon icon="arrow-up-outline" class="float-right" *ngIf="filter.sort.asc"></nb-icon>
@@ -53,7 +41,7 @@
             </ng-container>
           </th>
 
-          <th class="col-2 bold" class="text-center" colspan="2">Ações</th>
+          <th class="col-1 bold" class="text-center" colspan="2">Ações</th>
         </tr>
       </thead>
 
@@ -158,7 +146,7 @@
         </tr>
       </tfoot>
 
-    </table>
+    </app-table>
   </nb-card-body>
 
   <nb-card-footer *ngIf="table">

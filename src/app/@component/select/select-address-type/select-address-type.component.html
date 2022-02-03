@@ -1,8 +1,13 @@
+<label for="name" *ngIf="showTile" class="label">Tipo</label>
+
 <nb-select
+  *ngIf="loaded"
   fullWidth
   placeholder="Selecione"
   [(selected)]="selected"
+  [compareWith]="compareById"
   (selectedChange)=onSelectionChange()
+  [status]="(!submitted? 'basic': (form.valid)? 'success':'danger')">
   >
 
   <nb-option [value]=null>
@@ -14,3 +19,11 @@
   </nb-option>
 
 </nb-select>
+
+<div *ngIf="form?.invalid && submitted">
+
+  <div class="caption status-danger" *ngIf="form?.errors?.['required']">
+    Tipo é obrigatório.
+  </div>
+
+</div>

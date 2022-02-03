@@ -1,7 +1,47 @@
 // @nebular theming framework
 @import '~@nebular/theme/styles/theming';
-// @nebular out of the box themes
 @import '~@nebular/theme/styles/themes';
+
+@forward '@nebular/theme/styles/theming';
+@use '@nebular/theme/styles/theming' as *;
+@use '@nebular/theme/styles/themes/dark';
+
+$nb-themes: nb-register-theme((
+  color-primary-100: #b3e5fc,
+  color-primary-200: #81d4fa,
+  color-primary-300: #4fc3f7,
+  color-primary-400: #29b6f6,
+  color-primary-500: #03a9f4,
+  color-primary-600: #039be5,
+  color-primary-700: #0288d1,
+  color-primary-800: #0277bd,
+  color-primary-900: #01579b,
+
+  color-basic-100: white,
+  color-basic-200: #80cbc4,
+  color-basic-300: #4db6ac,
+  color-basic-400: #26a69a,
+  color-basic-500: #009688,
+  color-basic-600: #00897b,
+  color-basic-700: #00796b,
+  color-basic-800: #00695c,
+  color-basic-900: #004d40,
+  color-basic-1000: #a7ffeb,
+  color-basic-1100: #64ffda,
+
+  background-basic-color-1: color-basic-700,
+  background-basic-color-2: color-basic-800,
+  background-basic-color-3: color-basic-900,
+  background-basic-color-4: color-basic-100,
+  border-basic-color-1: color-basic-700,
+  border-basic-color-2: color-basic-800,
+  border-basic-color-3: color-basic-900,
+  border-basic-color-4: color-basic-1000,
+  border-basic-color-5: color-basic-1100,
+  shadow: 0 0.5rem 1rem 0 rgba(2, 52, 250, 0.24),
+  text-disabled-color: color-basic-600,
+), aquamarine, dark);
+
 
 $nb-themes: nb-register-theme((
   layout-padding-top: 2.25rem,

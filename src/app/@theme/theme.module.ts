@@ -82,9 +82,16 @@ export class ThemeModule {
       providers: [
         ...NbThemeModule.forRoot(
           {
-            name: 'default',
+            name: 'aquamarine',
           },
-          [ DEFAULT_THEME, COSMIC_THEME, CORPORATE_THEME, DARK_THEME ],
+
+          [
+            { name: 'aquamarine' },
+            DEFAULT_THEME,
+            COSMIC_THEME,
+            CORPORATE_THEME,
+            DARK_THEME,
+          ],
         ).providers,
       ],
     };

@@ -14,6 +14,12 @@ import { ContractService } from '../service/contract.service';
 })
 export class ContractAddComponent extends AddComponent<Contract> implements OnInit {
 
+  public hasCustomer: boolean = false;
+  public hasBusinessName: boolean = false;
+  public hasplaceResidence: boolean = false;
+  public hasplaceAddress: boolean = false;
+  public hasGroup: boolean = false;
+
   constructor(
     public router: Router,
     public activeRouter: ActivatedRoute,
@@ -66,6 +72,7 @@ export class ContractAddComponent extends AddComponent<Contract> implements OnIn
 
   public setCustomer(customer: Customer): void {
     this.customer.setValue(customer);
+    this.hasCustomer = (customer != null);
   }
 
   public setPlaceResidence(place: Place): void {

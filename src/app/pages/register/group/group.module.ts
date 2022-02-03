@@ -18,6 +18,7 @@ import { GroupComponent } from './group.component';
 import { NgxMaskModule } from 'ngx-mask';
 import { GroupDeleteComponent } from './delete/group-delete.component';
 import { GroupEditComponent } from './edit/group-edit.component';
+import { ComponentModule } from '../../../@component/component.module';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { GroupEditComponent } from './edit/group-edit.component';
 
     PipeModule,
     GroupRoutingModule,
+    ComponentModule,
     NgxMaskModule.forChild(),
   ],
 

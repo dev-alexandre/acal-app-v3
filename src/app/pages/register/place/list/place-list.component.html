@@ -9,22 +9,12 @@
   </nb-card-header>
 
   <nb-card-body>
-    Exibindo:
-
-    <nb-select [(ngModel)]="filter.page.size" (ngModelChange)="seach()">
-      <nb-option [value]=1>1</nb-option>
-      <nb-option [value]=5>5</nb-option>
-      <nb-option [value]=10>10</nb-option>
-      <nb-option [value]=20>20</nb-option>
-      <nb-option [value]=50>50</nb-option>
-      <nb-option [value]=100>100</nb-option>
-    </nb-select>
-
-    Registros
+    <app-select-rows-number (setValue)="setRowsSize($event)">
+    </app-select-rows-number>
   </nb-card-body>
 
   <nb-card-body>
-    <table class="table table-bordered table-striped">
+    <app-table class="table table-bordered table-striped">
 
       <thead>
         <tr>
@@ -79,22 +69,12 @@
           </th>
 
           <th>
-            <nb-select
-              fullWidth
-              placeholder="Selecione"
-              (selectedChange)="seach()"
-              [(ngModel)]="filter.model.address"
+
+            <app-select-address
+              [showTitle]="false"
+              (setValue)="setAddress($event)"
             >
-
-            <nb-option [value]=null>
-              Selecione
-            </nb-option>
-
-              <nb-option *ngFor="let address of addresses" [value]=address>
-                {{address | address}}
-              </nb-option>
-
-            </nb-select>
+            </app-select-address>
           </th>
 
           <th>
@@ -192,7 +172,7 @@
         </tr>
       </tfoot>
 
-    </table>
+    </app-table>
   </nb-card-body>
 
   <nb-card-footer *ngIf="table">

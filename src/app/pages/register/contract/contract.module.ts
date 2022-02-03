@@ -8,7 +8,8 @@ import {
   NbIconModule,
   NbSelectModule,
   NbButtonGroupModule,
-  NbSpinnerModule } from '@nebular/theme';
+  NbSpinnerModule,
+  NbStepperModule} from '@nebular/theme';
 import { NgxMaskModule } from 'ngx-mask';
 import { ContractAddComponent } from './add/contract-add.component';
 import { ContractRoutingModule } from './contract-routing.module';
@@ -19,6 +20,7 @@ import { ContractListComponent } from './list/contract-list.component';
 import { ContractService } from './service/contract.service';
 import { ComponentModule } from '@app/@component/component.module';
 import { PipeModule } from '@app/@shared/pipe/pipe.module';
+import { AddressService } from '../address/service/address.service';
 
 
 @NgModule({
@@ -38,8 +40,8 @@ import { PipeModule } from '@app/@shared/pipe/pipe.module';
     ReactiveFormsModule,
     ContractRoutingModule,
 
+    NbStepperModule,
     ComponentModule,
-
     NgxMaskModule.forChild(),
   ],
 
@@ -53,6 +55,7 @@ import { PipeModule } from '@app/@shared/pipe/pipe.module';
 
   providers: [
     ContractService,
+    AddressService,
   ],
 
 })

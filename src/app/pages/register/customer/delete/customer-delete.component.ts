@@ -10,6 +10,8 @@ import { CustomerService } from '../service/customer.service';
 })
 export class CustomerDeleteComponent extends DeleteComponent<Customer> implements OnInit {
 
+  public personType: boolean = true;
+
   constructor(
     public router: Router,
     public activeRouter: ActivatedRoute,
@@ -26,6 +28,7 @@ export class CustomerDeleteComponent extends DeleteComponent<Customer> implement
 
   ngOnInit(): void {
     super.load();
+    this.personType = (this.data?.document?.length === 11);
   }
 
   public key(): string {

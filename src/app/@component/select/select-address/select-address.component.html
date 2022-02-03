@@ -1,8 +1,12 @@
+<label *ngIf="showTitle" for="name" class="label">Logradouro</label>
+
 <nb-select
   fullWidth
+
   placeholder="Selecione"
   [(selected)]="selected"
   (selectedChange)=onSelectionChange()
+  [status]="(!submitted? 'basic': (form.valid)? 'success':'danger')">
   >
 
   <nb-option [value]=null>
@@ -15,5 +19,12 @@
     </nb-option>
   </nb-option-group>
 
-
 </nb-select>
+
+<div *ngIf="form?.invalid && submitted">
+
+  <p class="caption status-danger" *ngIf="form.errors?.['required']">
+    Endereço é obrigatório.
+  </p>
+
+</div>

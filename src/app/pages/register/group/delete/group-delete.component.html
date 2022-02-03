@@ -9,15 +9,12 @@
       <div class="form-row" *ngIf="loaded">
         <div class="col-6">
 
-          <label for="Número" class="label">Categoria</label>
-          <input
-            nbInput
-            id="numero"
-            type="text"
-            fullWidth
-            [value]="data.category"
-            disabled
-            >
+          <app-select-category
+            [selected]=data?.category
+            [disabled]=true
+          >
+          </app-select-category>
+
         </div>
 
         <div class="col-3">
@@ -26,7 +23,7 @@
             nbInput
             type="text"
             fullWidth
-            [value]="data.name"
+            [value]="data?.name"
             disabled
             >
 

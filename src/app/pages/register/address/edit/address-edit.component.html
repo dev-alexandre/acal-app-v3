@@ -9,33 +9,12 @@
 
       <div class="form-row">
         <div class="col-3">
-
-            <label for="name" class="label">Tipo</label>
-
-            <nb-select
-              fullWidth
-              [compareWith]="compareById"
-              [formControl]="addressType"
-              [status]="(!submitted?
-               'basic': (name.valid)? 'success':'danger' ) ">
-
-              <nb-option [value]='null'>
-                Selecione
-              </nb-option>
-
-              <nb-option *ngFor="let addressType of addressTypes" [value]=addressType>
-                {{addressType.name}}
-              </nb-option>
-            </nb-select>
-
-            <div *ngIf="addressType.invalid && submitted">
-
-              <div *ngIf="addressType.errors?.['required']">
-                Tipo é obrigatório.
-              </div>
-
-          </div>
-
+            <app-select-address-type
+              [form]="addressType"
+              [submitted]="submitted"
+              [selected]="data.addressType"
+              (setValue)="setAddressType($event)">
+            </app-select-address-type>
         </div>
 
         <div class="col-9">

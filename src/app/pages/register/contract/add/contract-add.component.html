@@ -1,3 +1,109 @@
+
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="needs-validation" novalidate [nbSpinner]="loading">
+  <nb-card accent="success">
+
+    <nb-card-header>
+      Contrato
+    </nb-card-header>
+
+    <nb-card-body>
+      <nb-stepper orientation="vertical">
+
+        <nb-step label="Cliente">
+        </nb-step>
+
+        <nb-step label="Endereço">
+        </nb-step>
+
+      </nb-stepper>
+    </nb-card-body>
+  </nb-card>
+</form>
+
+
+<!--
+
+<nb-card>
+  <nb-card-body>
+    <nb-stepper orientation="vertical">
+      <nb-step label="Selecionar Cliente">
+        <h4>Step content #1</h4>
+        <p class="lorem">
+          Proin varius accumsan semper. Praesent consequat tincidunt sagittis. Curabitur egestas sem a ipsum bibendum,
+          sit amet fringilla orci efficitur. Nam bibendum lectus ut viverra tristique. Fusce eu pulvinar magna, quis
+          viverra ex. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent metus turpis, commodo vel
+          placerat quis, lobortis in ligula.
+        </p>
+        <p class="lorem">
+          Curabitur luctus mattis risus nec condimentum. Donec at dui turpis. Sed vehicula fringilla rutrum. Nullam
+          sed ornare magna. Mauris vitae laoreet diam. Mauris fermentum ligula at lacinia semper. Nulla placerat dui
+          eu sapien pellentesque, eu placerat leo luctus. Cras pharetra blandit fermentum.
+        </p>
+        <button nbButton disabled nbStepperNext>prev</button>
+        <button nbButton nbStepperNext>next</button>
+      </nb-step>
+      <nb-step label="Second step">
+        <h4>Step content #2</h4>
+        <p class="lorem">
+          Proin varius accumsan semper. Praesent consequat tincidunt sagittis. Curabitur egestas sem a ipsum bibendum,
+          sit amet fringilla orci efficitur. Nam bibendum lectus ut viverra tristique. Fusce eu pulvinar magna, quis
+          viverra ex. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent metus turpis, commodo vel
+          placerat quis, lobortis in ligula.
+        </p>
+        <p class="lorem">
+          Curabitur luctus mattis risus nec condimentum. Donec at dui turpis. Sed vehicula fringilla rutrum. Nullam
+          sed ornare magna. Mauris vitae laoreet diam. Mauris fermentum ligula at lacinia semper. Nulla placerat dui
+          eu sapien pellentesque, eu placerat leo luctus. Cras pharetra blandit fermentum.
+        </p>
+        <button nbButton nbStepperPrevious>prev</button>
+        <button nbButton nbStepperNext>next</button>
+      </nb-step>
+      <nb-step label="Third step">
+        <h4>Step content #3</h4>
+        <p class="lorem">
+          Proin varius accumsan semper. Praesent consequat tincidunt sagittis. Curabitur egestas sem a ipsum bibendum,
+          sit amet fringilla orci efficitur. Nam bibendum lectus ut viverra tristique. Fusce eu pulvinar magna, quis
+          viverra ex. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent metus turpis, commodo vel
+          placerat quis, lobortis in ligula.
+        </p>
+        <p class="lorem">
+          Curabitur luctus mattis risus nec condimentum. Donec at dui turpis. Sed vehicula fringilla rutrum. Nullam
+          sed ornare magna. Mauris vitae laoreet diam. Mauris fermentum ligula at lacinia semper. Nulla placerat dui
+          eu sapien pellentesque, eu placerat leo luctus. Cras pharetra blandit fermentum.
+        </p>
+        <button nbButton nbStepperPrevious>prev</button>
+        <button nbButton nbStepperNext>next</button>
+      </nb-step>
+      <nb-step label="Fourth step">
+        <h4>Step content #4</h4>
+        <p class="lorem">
+          Proin varius accumsan semper. Praesent consequat tincidunt sagittis. Curabitur egestas sem a ipsum bibendum,
+          sit amet fringilla orci efficitur. Nam bibendum lectus ut viverra tristique. Fusce eu pulvinar magna, quis
+          viverra ex. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent metus turpis, commodo vel
+          placerat quis, lobortis in ligula.
+        </p>
+        <p class="lorem">
+          Curabitur luctus mattis risus nec condimentum. Donec at dui turpis. Sed vehicula fringilla rutrum. Nullam
+          sed ornare magna. Mauris vitae laoreet diam. Mauris fermentum ligula at lacinia semper. Nulla placerat dui
+          eu sapien pellentesque, eu placerat leo luctus. Cras pharetra blandit fermentum.
+        </p>
+
+      </nb-step>
+    </nb-stepper>
+  </nb-card-body>
+
+  <nb-card-footer>
+    <button nbButton type="button" status="basic" nbStepperPrevious>prev</button>
+    <button nbButton type="button" status="success" disabled nbStepperNext>next</button>
+
+
+    <button type="button" nbButton status="basic" nbStepperNext (click)="voltar()">Voltar</button>
+    <button type="submit" nbButton status="success" nbStepperPrevious class="float-right">Salvar</button>
+  </nb-card-footer>
+
+</nb-card>
+
 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="needs-validation" novalidate [nbSpinner]="loading">
   <nb-card accent="success">
 
@@ -9,7 +115,8 @@
       <div class="form-row">
 
         <div class="col-12">
-          <label for="name" class="label">Cliente</label>
+          <label for="name" class="label">Selecione o Cliente</label>
+
           <app-auto-complete-customer
             (setValue)="setCustomer($event)"
             [status]="(!submitted? 'basic': (customer.valid)? 'success':'danger' ) "
@@ -17,7 +124,7 @@
           </app-auto-complete-customer>
         </div>
 
-        <div class="col-12">
+        <div class="col-12" *ngIf="hasCustomer">
           <label for="name" class="label">Nome Fantasia</label>
           <input
           id="numero"
@@ -43,7 +150,7 @@
 
         </div>
 
-        <div class="col-12">
+        <div class="col-12" *ngIf="hasBusinessName">
           <label for="name" class="label">Matrícula</label>
           <app-auto-complete-place
             (setValue)="setPlaceResidence($event)"
@@ -52,7 +159,7 @@
           </app-auto-complete-place>
         </div>
 
-        <div class="col-12">
+        <div class="col-12" *ngIf="false">
           <label for="name" class="label">Matrícula de correspondência</label>
           <app-auto-complete-place
           (setValue)="setPlaceMail($event)"
@@ -61,7 +168,7 @@
         </app-auto-complete-place>
         </div>
 
-        <div class="col-12">
+        <div class="col-12" *ngIf="false">
           <label for="name" class="label">Grupo</label>
           <app-auto-complete-group
             (setValue)="setGroup($event)"
@@ -80,3 +187,4 @@
 
   </nb-card>
 </form>
+-->

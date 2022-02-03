@@ -30,7 +30,6 @@ export class PlaceListComponent extends ListComponent<Place> implements OnInit {
 
   ngOnInit(): void {
     this.seach();
-    this.loadAdress();
   }
 
   public initModel(filter: Filter<Place>): void {
@@ -40,12 +39,16 @@ export class PlaceListComponent extends ListComponent<Place> implements OnInit {
     };
   }
 
-  public loadAdress(): void {
-    this.addressService.list().subscribe(
-      (addresses) => {
-        this.addresses = addresses;
-      });
+  setAddress(address: Address) {
+    this.filter.model.address = address;
+    this.seach();
   }
+
+  public setRowsSize(size: number): void {
+    this.filter.page.size = size;
+    this.seach();
+  }
+
 
   key(): string {
     return `[place]`;

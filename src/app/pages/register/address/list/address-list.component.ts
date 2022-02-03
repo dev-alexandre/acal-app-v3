@@ -42,6 +42,12 @@ export class AddressListComponent extends ListComponent<Address> implements OnIn
     return `[address]`;
   }
 
+
+  public setRowsSize(size: number): void {
+    this.filter.page.size = size;
+    this.seach();
+  }
+
   setAddressType(addressType: AddressType): void {
     this.filter.model.addressType = addressType;
     this.seach();

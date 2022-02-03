@@ -10,6 +10,7 @@ import { GroupService } from '../service/group.service';
 })
 export class GroupDeleteComponent extends DeleteComponent<Group> implements OnInit {
 
+
   constructor(
     public router: Router,
     public activeRouter: ActivatedRoute,
@@ -22,6 +23,7 @@ export class GroupDeleteComponent extends DeleteComponent<Group> implements OnIn
       service,
       toastrService,
     );
+
   }
 
   ngOnInit(): void {

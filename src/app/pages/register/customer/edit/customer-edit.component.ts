@@ -11,6 +11,7 @@ import { CustomerService } from '../service/customer.service';
 })
 export class CustomerEditComponent extends EditComponent<Customer> implements OnInit {
 
+  public personType: boolean = true;
 
   public key(): string {
       return `[customer]`;
@@ -34,32 +35,59 @@ export class CustomerEditComponent extends EditComponent<Customer> implements On
     this.loadForm();
   }
 
-
   public createForm(customer: Customer) {
-    this.form = new FormGroup({
+    this.personType = (customer?.document?.length === 11);
 
+    this.form = new FormGroup({
       id: new FormControl(
-        customer.id, [
-        Validators.required,
-      ]),
+        customer.id,
+      ),
 
       name: new FormControl(
         customer.name, [
-        Validators.required,
-        Validators.minLength(4),
-        Validators.maxLength(100),
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(100),
+
       ]),
 
-      createdAt: new FormControl(
-        customer.createdAt, [
-        Validators.required,
-      ]),
+      document: new FormControl(
+        customer.document, [
+          Validators.required,
+        ]),
 
+        businessName: new FormControl(
+          customer.businessName, [
+        ]),
+
+        phoneNumber: new FormControl(
+          customer.phoneNumber, [
+        ]),
+
+        birthDate: new FormControl(
+          customer.birthDate, [
+        ]),
     });
   }
 
   public get name() {
     return this.form.get('name');
+  }
+
+  public get document() {
+    return this.form.get('document');
+  }
+
+  public get businessName() {
+    return this.form.get('businessName');
+  }
+
+  public get phoneNumber() {
+    return this.form.get('phoneNumber');
+  }
+
+  public get birthDate() {
+    return this.form.get('birthDate');
   }
 
 }

@@ -10,6 +10,7 @@ export interface AllOptions<T extends AbstractModel> {
 
 export abstract class AutoCompleteComponent<T extends AbstractModel> {
 
+  public size: number = 0;
   public options: T[] = [];
   public allOptions: AllOptions<T>[] = [];
 
@@ -34,6 +35,9 @@ export abstract class AutoCompleteComponent<T extends AbstractModel> {
     return t.name;
   }
 
+  focusOutFunction() {
+  }
+
   onSelectionChange($event: T) {
     this.selected = $event;
     this.options = this.options.filter( filter => {filter.name === this.selected.name; });
@@ -41,6 +45,7 @@ export abstract class AutoCompleteComponent<T extends AbstractModel> {
   }
 
   onChange() {
+    this.size = this.inputtedValue.length;
     if (this.inputtedValue.length < 3) {
       return;
     }
@@ -59,6 +64,7 @@ export abstract class AutoCompleteComponent<T extends AbstractModel> {
   }
 
   clear(): void {
+    this.size = 0;
     this.selected = null;
     this.inputtedValue = '';
     this.allOptions = [];

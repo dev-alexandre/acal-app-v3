@@ -9,44 +9,12 @@
       <div class="form-row">
         <div class="col-6">
 
-            <label for="name" class="label">Categoria</label>
-            <nb-select
-              fullWidth
-              placeholder="Categoria"
-              [formControl]="category"
-              [status]="(!submitted?
-              'basic': (category.valid)? 'success':'danger' ) ">
-
-              <nb-option [value]=null>
-                Selecione
-              </nb-option>
-
-              <nb-option [value]=null>
-                Selecione
-              </nb-option>
-
-              <nb-option [value]='"FOUNDER"'>
-                Sócio Fundador
-              </nb-option>
-
-              <nb-option [value]='"EFFECTIVE"'>
-                Sócio Efetivo
-              </nb-option>
-
-              <nb-option [value]='"TEMPORARY"'>
-                Sócio Temporário
-              </nb-option>
-
-
-            </nb-select>
-
-            <div *ngIf="category.invalid && submitted">
-
-              <div *ngIf="category.errors?.['required']">
-                Endereço é obrigatório.
-              </div>
-
-            </div>
+          <app-select-category
+            [form]="category"
+            [submitted]="submitted"
+            (setValue)="setCategory($event)"
+          >
+          </app-select-category>
 
         </div>
 

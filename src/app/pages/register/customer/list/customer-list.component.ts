@@ -36,4 +36,9 @@ export class CustomerListComponent extends ListComponent<Customer> implements On
     return `[customer]`;
   }
 
+  public setRowsSize(size: number): void {
+    this.filter.page.size = size;
+    this.seach();
+  }
+
 }

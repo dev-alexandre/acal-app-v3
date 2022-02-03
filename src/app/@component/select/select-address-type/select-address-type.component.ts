@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { AddressType } from '@app/@shared/model/address-type/address-type.model';
 import { Filter } from '@app/@shared/model/table/table-model';
 import { AddressTypeService } from '@app/pages/register/address-type/service/address-type.service';
@@ -6,9 +7,20 @@ import { AddressTypeService } from '@app/pages/register/address-type/service/add
 @Component({
   selector: 'app-select-address-type',
   templateUrl: './select-address-type.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SelectAddressTypeComponent  {
+export class SelectAddressTypeComponent {
+
+  @Input()
+  public form: FormControl;
+
+  @Input()
+  public submitted: boolean = false;
+
+  @Input()
+  public showTile: boolean = true;
+
+  @Input()
+  public selected: AddressType = null;
 
   @Output()
   private setValue = new EventEmitter();
@@ -16,11 +28,11 @@ export class SelectAddressTypeComponent  {
   @Output()
   private setNameOnly = new EventEmitter();
 
+  public loaded: boolean = false;
   public options: AddressType[] = [];
-  public selected: AddressType = null;
   public filter: Filter<AddressType>;
 
-  constructor(public service: AddressTypeService) {
+  constructor(public service: AddressTypeService)  {
 
     this.filter = {
       page: {size: 10, number: 0},
@@ -31,6 +43,8 @@ export class SelectAddressTypeComponent  {
     this.init();
   }
 
+
+
   init (): void {
     this.service.list().subscribe(
       (options) => {
@@ -38,6 +52,7 @@ export class SelectAddressTypeComponent  {
 
         const names = options.map(o => o.name);
         this.options = options.filter(({name}, index) => !names.includes(name, index + 1));
+        this.loaded = true;
       });
   }
 
@@ -46,4 +61,7 @@ export class SelectAddressTypeComponent  {
     this.setNameOnly.emit({name: this.selected?.name});
   }
 
+  compareById(v1, v2): boolean {
+    return v1?.id === v2?.id;
+  }
 }

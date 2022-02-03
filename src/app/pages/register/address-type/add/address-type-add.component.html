@@ -18,22 +18,25 @@
           placeholder="Nome"
           [status]="(!submitted? 'basic': (name.valid)? 'success':'danger' ) "
           >
+
+          <div *ngIf="name.invalid && submitted">
+
+            <p class="caption status-danger" *ngIf="name.errors?.['required']">
+              Nome é obrigatório.
+            </p>
+
+            <p class="caption status-danger"  *ngIf="name.errors?.['minlength']">
+              Nome deve ter pelo menos {{name.errors['minlength']?.requiredLength}} caracteres
+            </p>
+
+            <p class="caption status-danger" *ngIf="name.errors?.['maxlength']">
+              Nome deve ter no maximo {{name.errors['maxlength'].requiredLength}} caracteres
+            </p>
+
+          </div>
+
       </div>
 
-      <div *ngIf="name.invalid && submitted">
-
-        <div *ngIf="name.errors?.['required']">
-          Nome é obrigatório.
-        </div>
-
-        <div *ngIf="name.errors?.['minlength']">
-          Nome deve ter pelo menos {{name.errors['minlength']?.requiredLength}} caracteres
-        </div>
-
-        <div *ngIf="name.errors?.['maxlength']">
-          Nome deve ter no maximo {{name.errors['maxlength'].requiredLength}} caracteres
-        </div>
-      </div>
 
     </nb-card-body>
 

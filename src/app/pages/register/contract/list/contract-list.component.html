@@ -9,22 +9,12 @@
   </nb-card-header>
 
   <nb-card-body>
-    Exibindo:
-
-    <nb-select [(ngModel)]="filter.page.size" (ngModelChange)="seach()">
-      <nb-option [value]=1>1</nb-option>
-      <nb-option [value]=5>5</nb-option>
-      <nb-option [value]=10>10</nb-option>
-      <nb-option [value]=20>20</nb-option>
-      <nb-option [value]=50>50</nb-option>
-      <nb-option [value]=100>100</nb-option>
-    </nb-select>
-
-    Registros
+    <app-select-rows-number (setValue)="setRowsSize($event)">
+    </app-select-rows-number>
   </nb-card-body>
 
   <nb-card-body>
-    <table class="table table-bordered table-striped">
+    <app-table class="table table-bordered table-striped">
 
       <thead>
         <tr>
@@ -38,7 +28,7 @@
           </th>
 
           <th class="col-2 bold" (click)="order('name')">
-            Número
+            Contrato
             <ng-container *ngIf="filter.sort.value === 'name'">
               <nb-icon icon="arrow-up-outline" class="float-right" *ngIf="filter.sort.asc"></nb-icon>
               <nb-icon icon="arrow-down-outline" class="float-right" *ngIf="!filter.sort.asc"></nb-icon>
@@ -53,15 +43,23 @@
             </ng-container>
           </th>
 
-          <th class="col-3 bold" (click)="order('placeResidence.name')">
-            Matricula
-            <ng-container *ngIf="filter.sort.value === 'placeResidence.name'">
-              <nb-icon icon="arrow-up-outline" class="float-right" *ngIf="filter.sort.asc"></nb-icon>
-              <nb-icon icon="arrow-down-outline" class="float-right" *ngIf="!filter.sort.asc"></nb-icon>
-            </ng-container>
+          <th class="col-1 bold">
+            Logradouro
           </th>
 
-          <th class="col-2 bold" class="text-center" colspan="2">Ações</th>
+          <th class="col-1 bold" (click)="order('placeResidence.name')">
+            Número
+          </th>
+
+          <th class="col-1 bold" (click)="order('placeResidence.name')">
+            Letra
+          </th>
+
+          <th class="col-1 bold">
+            Valor
+          </th>
+
+          <th class="col-1 bold" class="text-center" colspan="2">Ações</th>
         </tr>
       </thead>
 
@@ -107,8 +105,49 @@
           </th>
 
           <th>
-            <app-auto-complete-place (setValue)="setPlace($event)">
-            </app-auto-complete-place>
+            <app-select-address [showTitle]=false (setValue)="setAddress($event)">
+            </app-select-address>
+          </th>
+
+          <th>
+            <input
+              type="text"
+              nbInput
+              fullWidth
+              placeholder="Nome"
+              class="form-control"
+              mask="0*"
+              [(ngModel)]="filter.model.placeResidence.number"
+              (keyup.enter)="seach()"
+            >
+          </th>
+
+          <th>
+            <input
+            type="text"
+            nbInput
+            fullWidth
+            mask="S*"
+            placeholder="Nome"
+            class="form-control"
+            [(ngModel)]="filter.model.placeResidence.letter"
+            (keyup.enter)="seach()"
+          >
+          </th>
+
+          <th>
+            <input
+              type="text"
+              nbInput
+              fullWidth
+              placeholder="Nome"
+              class="form-control"
+              prefix="R$ "
+              mask="separator.2"
+              thousandSeparator="."
+              [(ngModel)]="filter.model.group.monetaryValue"
+              (keyup.enter)="seach()"
+            >
           </th>
 
           <th colspan="2">
@@ -125,11 +164,14 @@
           <th class="align-middle"> {{item.id}} </th>
           <td class="align-middle"> {{item.name | contractNumber}} </td>
           <td class="align-middle"> {{item.customer.name}} </td>
-          <td class="align-middle"> {{item.placeResidence | place}} </td>
+          <td class="align-middle"> {{item.placeResidence.address | address}} </td>
+          <td class="align-middle"> {{item.placeResidence.number }} </td>
+          <td class="align-middle"> {{item.placeResidence.letter}} </td>
+          <td class="align-middle"> {{item.group.monetaryValue | currency }} </td>
 
           <td>
-            <button nbButton outline fullWidth status="warning" (click)="navegar('editar', item)" >
-              <nb-icon icon="edit-2-outline">
+            <button nbButton outline fullWidth status="basic" (click)="navegar('editar', item)" >
+              <nb-icon icon="alert-circle-outline">
               </nb-icon>
             </button>
           </td>
@@ -143,7 +185,7 @@
         </tr>
       </tbody>
 
-    </table>
+    </app-table>
   </nb-card-body>
 
   <nb-card-footer *ngIf="table">

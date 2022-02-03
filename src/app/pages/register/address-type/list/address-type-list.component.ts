@@ -35,4 +35,8 @@ export class AddressTypeListComponent extends ListComponent<AddressType> impleme
     this.seach();
   }
 
+  public setRowsSize(size: number): void {
+    this.filter.page.size = size;
+    this.seach();
+  }
 }

@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
-import { AddressType } from '@app/@shared/model/address-type/address-type.model';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Address } from '@app/@shared/model/address/address.model';
 import { Filter } from '@app/@shared/model/table/table-model';
 import { AddressService } from '@app/pages/register/address/service/address.service';
@@ -16,12 +16,23 @@ export interface Options {
 })
 export class SelectAddressComponent  {
 
+  @Input()
+  public form: FormControl;
+
+  @Input()
+  public submitted: boolean = false;
+
+  @Input()
+  public showTitle: boolean = true;
+
+  @Input()
+  public selected: Address = null;
+
   @Output()
   private setValue = new EventEmitter();
 
   public options: Address[] = [];
   public allOptions: Options[] = [];
-  public selected: Address = null;
   public filter: Filter<Address>;
 
   constructor(public service: AddressService) {
@@ -48,10 +59,11 @@ export class SelectAddressComponent  {
 
   initOptions(options: Address[]): void {
 
-    const allAddressType: AddressType[] = [];
+    const allAddressType: String[] = [];
 
     options.forEach( op => {
-      if (!allAddressType.some( at => at.id === op.id)) {
+      if (!allAddressType.some( aat => aat === op.addressType.name)) {
+        allAddressType.push(op.addressType.name);
         this.allOptions.push(
           {
             name: op.addressType.name,
@@ -61,8 +73,14 @@ export class SelectAddressComponent  {
       }
     });
 
-
-
+      this.allOptions.sort((a, b) => a.name > b.name ? 1 : -1);
+      this.allOptions.forEach(option => {
+        option
+          .groups
+            .sort((a, b) => a.addressType.name > b.addressType.name ? 1 : -1)
+            .sort((a, b) => a.name > b.name ? 1 : -1)
+          ;
+      });
   }
 
 }

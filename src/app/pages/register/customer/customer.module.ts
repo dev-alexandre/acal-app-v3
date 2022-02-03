@@ -19,6 +19,7 @@ import { CustomerListComponent } from './list/customer-list.component';
 import { CustomerService } from './service/customer.service';
 import { NgxMaskModule } from 'ngx-mask';
 import { PipeModule } from '@app/@shared/pipe/pipe.module';
+import { ComponentModule } from '../../../@component/component.module';
 
 @NgModule({
 
@@ -37,7 +38,7 @@ import { PipeModule } from '@app/@shared/pipe/pipe.module';
     ReactiveFormsModule,
     CustomerRoutingModule,
     NgxMaskModule.forChild(),
-
+    ComponentModule,
     PipeModule,
   ],
 

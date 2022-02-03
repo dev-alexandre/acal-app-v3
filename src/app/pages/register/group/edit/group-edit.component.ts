@@ -65,6 +65,10 @@ export class GroupEditComponent extends EditComponent<Group> implements OnInit {
     });
   }
 
+  public setCategory(category: String) {
+    this.category.setValue(category);
+  }
+
   public get category() {
     return this.form.get('category');
   }

@@ -54,6 +54,10 @@ export class GroupAddComponent extends AddComponent<Group> implements OnInit {
     });
   }
 
+  public setCategory(category: String) {
+    this.category.setValue(category);
+  }
+
   public get category() {
     return this.form.get('category');
   }

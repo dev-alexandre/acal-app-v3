@@ -9,31 +9,12 @@
       <div class="form-row">
         <div class="col-6">
 
-            <label for="name" class="label">Logradouro</label>
-            <nb-select
-              fullWidth
-              placeholder="Logradouro"
-              [formControl]="address"
-              [status]="(!submitted?
-              'basic': (address.valid)? 'success':'danger' ) ">
-
-              <nb-option [value]=null>
-                Selecione
-              </nb-option>
-
-              <nb-option *ngFor="let address of addresses" [value]=address>
-                {{address | address}}
-              </nb-option>
-
-            </nb-select>
-
-              <div *ngIf="address.invalid && submitted">
-
-                <div *ngIf="address.errors?.['required']">
-                  Endereço é obrigatório.
-                </div>
-
-              </div>
+            <app-select-address
+              (setValue)="setAddress($event)"
+              [submitted]="submitted"
+              [form]="address"
+            >
+            </app-select-address>
 
         </div>
 
@@ -52,17 +33,17 @@
 
           <div *ngIf="number.invalid && submitted">
 
-            <div *ngIf="number.errors?.['required']">
+            <p class="caption status-danger" *ngIf="number.errors?.['required']">
               Número é obrigatório.
-            </div>
+            </p>
 
-            <div *ngIf="number.errors?.['minlength']">
+            <p class="caption status-danger" *ngIf="number.errors?.['minlength']">
               Nome deve ter pelo menos 1 caracteres
-            </div>
+            </p>
 
-            <div *ngIf="number.errors?.['maxlength']">
+            <p class="caption status-danger" *ngIf="number.errors?.['maxlength']">
               Nome deve ter no maximo 4 caracteres
-            </div>
+            </p>
 
           </div>
         </div>
@@ -82,17 +63,17 @@
 
           <div *ngIf="letter.invalid && submitted">
 
-            <div *ngIf="letter.errors?.['required']">
+            <p class="caption status-danger" *ngIf="letter.errors?.['required']">
               Número é obrigatório.
-            </div>
+            </p>
 
-            <div *ngIf="letter.errors?.['minlength']">
+            <p  class="caption status-danger" *ngIf="letter.errors?.['minlength']">
               Letra deve ter pelo menos 1 caracteres
-            </div>
+            </p>
 
-            <div *ngIf="letter.errors?.['maxlength']">
+            <p  class="caption status-danger" *ngIf="letter.errors?.['maxlength']">
               Nome deve ter no maximo 4 caracteres
-            </div>
+            </p>
 
           </div>
         </div>

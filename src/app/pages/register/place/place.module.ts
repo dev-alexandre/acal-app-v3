@@ -19,6 +19,7 @@ import { PlaceComponent } from './place.component';
 import { AddressService } from '../address/service/address.service';
 import { NgxMaskModule } from 'ngx-mask';
 import { PipeModule } from '@app/@shared/pipe/pipe.module';
+import { ComponentModule } from '@app/@component/component.module';
 
 
 @NgModule({
@@ -39,6 +40,8 @@ import { PipeModule } from '@app/@shared/pipe/pipe.module';
     PipeModule,
     PlaceRoutingModule,
     NgxMaskModule.forChild(),
+
+    ComponentModule,
   ],
 
   declarations: [

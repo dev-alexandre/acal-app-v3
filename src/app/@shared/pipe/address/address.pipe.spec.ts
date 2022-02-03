@@ -5,4 +5,5 @@ describe('AddressPipe', () => {
     const pipe = new AddressPipe();
     expect(pipe).toBeTruthy();
   });
+
 });
