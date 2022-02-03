@@ -1,0 +1,36 @@
+<label for="name" *ngIf="showTitle" class="label">Categoria</label>
+
+  <nb-select
+    fullWidth
+    placeholder="Categoria"
+    [(selected)]="selected"
+    (selectedChange)=onSelectionChange()
+    [status]="(!submitted? 'basic': (form.valid)? 'success':'danger' ) "
+    [disabled]="disabled"
+  >
+
+  <nb-option [value]=null>
+    Selecione
+  </nb-option>
+
+  <nb-option [value]='"EFFECTIVE"'>
+    Efetivo
+  </nb-option>
+
+  <nb-option [value]='"FOUNDER"'>
+    Fundador
+  </nb-option>
+
+  <nb-option [value]='"TEMPORARY"'>
+    Temporário
+  </nb-option>
+
+</nb-select>
+
+<div *ngIf="!form?.valid && submitted">
+
+  <p class="caption status-danger" *ngIf="form?.errors?.['required']">
+    Categoria é obrigatório.
+  </p>
+
+</div>
