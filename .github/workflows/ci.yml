@@ -7,8 +7,10 @@ on:
       - 'main'
 
 jobs:
-  checkout:
+  build:
+    name: Checkout
     runs-on: ubuntu-latest
+      steps: - name: Install SSH key
   build:
     runs-on: ubuntu-latest
     steps:
