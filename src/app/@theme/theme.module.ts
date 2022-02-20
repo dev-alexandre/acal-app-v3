@@ -86,7 +86,6 @@ export class ThemeModule {
           },
 
           [
-            { name: 'aquamarine' },
             DEFAULT_THEME,
             COSMIC_THEME,
             CORPORATE_THEME,
