@@ -7,7 +7,7 @@ import { PlaceService } from '@app/pages/register/place/service/place.service';
 import {
   NbAutocompleteModule, NbButtonModule, NbCardModule,
   NbDialogModule, NbFormFieldModule,
-  NbIconModule, NbInputModule, NbSelectModule
+  NbIconModule, NbInputModule, NbSelectModule,
 } from '@nebular/theme';
 import { PipeModule } from '../@shared/pipe/pipe.module';
 import { FormsModule } from '../pages/forms/forms.module';

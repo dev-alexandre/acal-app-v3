@@ -8,7 +8,7 @@ describe('AppTableComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AppTableComponent ]
+      declarations: [ AppTableComponent ],
     })
     .compileComponents();
   });

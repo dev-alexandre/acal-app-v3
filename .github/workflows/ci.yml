@@ -1,16 +1,14 @@
 
-name: Deploy to demo
+name: Deploy
 
 on:
   push:
     branches:
-      - 'demo'
-    paths:
-      - 'src/**'
-  repository_dispatch:
-    types: deploy-to-demo
+      - 'main'
 
 jobs:
+  checkout:
+    runs-on: ubuntu-latest
   build:
     runs-on: ubuntu-latest
     steps:
@@ -25,5 +23,5 @@ jobs:
         with:
           ref: demo
       - run: npm install
-      - run: npm run build:demo:prod
+      - run: npm run build -- --configuration production --aot --base-href /acal-app-v3/
       - run: rsync -r --delete-after dist/. "${{ secrets.REMOTE_URL }}":"${{ secrets.ADDRESS }}"
