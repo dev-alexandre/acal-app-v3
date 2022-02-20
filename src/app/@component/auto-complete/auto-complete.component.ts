@@ -56,11 +56,13 @@ export abstract class AutoCompleteComponent<T extends AbstractModel> {
       model: this.model,
     };
 
-    this.service.filterByExample(filter).subscribe(
-      (options) => {
-        this.options = options;
-        this.createMenu();
-      });
+    this.service
+      .filterByExample(filter)
+      .subscribe(
+        (options) => {
+          this.options = options;
+          this.createMenu();
+        });
   }
 
   clear(): void {
