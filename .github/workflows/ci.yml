@@ -63,5 +63,8 @@ jobs:
           body: ${{ steps.changelog.outputs.clean_changelog }}
 
       - name: Deploy
-        run: |
-          npm run deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB_ACTION }}
+          BRANCH: gh-pages
+          FOLDER: dist
