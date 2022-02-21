@@ -32,9 +32,8 @@
     "prepush": "npm run lint:ci",
     "release:changelog": "npm run conventional-changelog -- -p angular -i CHANGELOG.md -s",
     "postinstall": "ngcc --properties es2015 es5 browser module main --first-only --create-ivy-entry-points --tsconfig \"./src/tsconfig.app.json\"",
-
     "predeploy": "npm run build -- --configuration production --aot --base-href /acal-app-v3/",
-    "deploy":"gh-pages -d build"
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@akveo/ng2-completer": "^9.0.1",
@@ -52,6 +51,7 @@
     "@fortawesome/angular-fontawesome": "^0.10.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@jamesives/github-pages-deploy-action": "^4.2.5",
     "@nebular/auth": "8.0.0",
     "@nebular/eva-icons": "^8.0.0",
     "@nebular/security": "8.0.0",
