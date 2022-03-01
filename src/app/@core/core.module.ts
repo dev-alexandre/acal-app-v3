@@ -1,6 +1,6 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NbAuthModule, NbDummyAuthStrategy } from '@nebular/auth';
+import { NbAuthModule, NbDummyAuthStrategy, NbPasswordAuthStrategy } from '@nebular/auth';
 import { NbSecurityModule, NbRoleProvider } from '@nebular/security';
 import { of as observableOf } from 'rxjs';
 
@@ -52,6 +52,12 @@ import { StatsProgressBarService } from './mock/stats-progress-bar.service';
 import { VisitorsAnalyticsService } from './mock/visitors-analytics.service';
 import { SecurityCamerasService } from './mock/security-cameras.service';
 import { MockDataModule } from './mock/mock-data.module';
+import { NgxAuthModule } from '@app/auth/auth.module';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { NgxAuthRoutingModule } from '@app/auth/auth-routing.module';
+import { NbAlertModule, NbInputModule, NbButtonModule, NbCheckboxModule } from '@nebular/theme';
+import { strategyConfigs } from '@app/auth/auth-strategy';
 
 const socialLinks = [
   {
@@ -95,7 +101,6 @@ const DATA_SERVICES = [
 
 export class NbSimpleRoleProvider extends NbRoleProvider {
   getRole() {
-    // here you could provide any role based on any auth flow
     return observableOf('guest');
   }
 }
@@ -106,19 +111,9 @@ export const NB_CORE_PROVIDERS = [
   ...NbAuthModule.forRoot({
 
     strategies: [
-      NbDummyAuthStrategy.setup({
-        name: 'email',
-        delay: 3000,
-      }),
+      strategyConfigs,
     ],
-    forms: {
-      login: {
-        socialLinks: socialLinks,
-      },
-      register: {
-        socialLinks: socialLinks,
-      },
-    },
+
   }).providers,
 
   NbSecurityModule.forRoot({
@@ -148,13 +143,22 @@ export const NB_CORE_PROVIDERS = [
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
+    RouterModule,
+    NbAlertModule,
+    NbInputModule,
+    NbButtonModule,
+    NbCheckboxModule,
+    NgxAuthRoutingModule,
+    NgxAuthModule,
   ],
   exports: [
-    NbAuthModule,
+    NgxAuthModule,
   ],
   declarations: [],
 })
 export class CoreModule {
+
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
     throwIfAlreadyLoaded(parentModule, 'CoreModule');
   }
