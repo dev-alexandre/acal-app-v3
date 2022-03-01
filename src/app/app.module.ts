@@ -1,5 +1,7 @@
+import { registerLocaleData } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import localePt from '@angular/common/locales/pt';
+import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
@@ -17,13 +19,19 @@ import { CoreModule } from './@core/core.module';
 import { ThemeModule } from './@theme/theme.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
-import {LOCALE_ID, DEFAULT_CURRENCY_CODE} from '@angular/core';
-import {registerLocaleData} from '@angular/common';
-import localePt from '@angular/common/locales/pt';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AuthGuard } from './auth/auth-guard.service';
 
 registerLocaleData(localePt, 'pt');
+
+const defaultLocate =  {
+  provide: LOCALE_ID,
+  useValue: 'pt',
+};
+
+const defaultCurrency = {
+  provide:  DEFAULT_CURRENCY_CODE,
+  useValue: 'BRL',
+};
 
 @NgModule({
   declarations: [
@@ -46,21 +54,16 @@ registerLocaleData(localePt, 'pt');
     }),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
-    NbEvaIconsModule,
-    NbToastrModule.forRoot(),
     NgxMaskModule.forRoot(),
-    NbDialogModule.forRoot(),
+    NbEvaIconsModule,
   ],
+
   providers: [
-    {
-      provide: LOCALE_ID,
-      useValue: 'pt',
-    },
-    {
-        provide:  DEFAULT_CURRENCY_CODE,
-        useValue: 'BRL',
-    },
+    AuthGuard,
+    defaultLocate,
+    defaultCurrency,
   ],
+
   bootstrap: [AppComponent],
 })
 
