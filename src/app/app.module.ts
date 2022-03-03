@@ -1,5 +1,5 @@
 import { registerLocaleData } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import localePt from '@angular/common/locales/pt';
 import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -20,6 +20,8 @@ import { ThemeModule } from './@theme/theme.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './auth/auth-guard.service';
+import { ErrorInterceptor } from './auth/interceptor/error.interceptor';
+import { JwtInterceptor } from './auth/interceptor/jwt.interceptor';
 
 registerLocaleData(localePt, 'pt');
 
@@ -62,6 +64,8 @@ const defaultCurrency = {
     AuthGuard,
     defaultLocate,
     defaultCurrency,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
 
   bootstrap: [AppComponent],

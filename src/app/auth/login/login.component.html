@@ -78,11 +78,12 @@
     <a class="forgot-password" routerLink="../request-password">Esqueceu sua senha?</a>
   </div>
 
-  <button nbButton
-          fullWidth
-          status="success"
-          [disabled]="submitted || !form.valid"
-          [class.btn-pulse]="submitted">
+  <button
+    nbButton
+    fullWidth
+    status="success"
+    [disabled]="submitted || !form.valid"
+    [class.btn-pulse]="submitted">
     Entrar
   </button>
 </form>

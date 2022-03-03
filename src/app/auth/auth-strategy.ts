@@ -1,10 +1,15 @@
 import { environment } from '@env/environment';
-import { NbPasswordAuthStrategy } from '@nebular/auth';
+import { NbAuthJWTToken, NbPasswordAuthStrategy } from '@nebular/auth';
 
 export const strategyConfigs = NbPasswordAuthStrategy.setup({
   name: 'email',
 
   baseEndpoint: environment.apiUrl,
+
+  token: {
+    class: NbAuthJWTToken,
+    key: 'token',
+  },
 
   login: {
     endpoint: '/auth/login',
@@ -12,7 +17,7 @@ export const strategyConfigs = NbPasswordAuthStrategy.setup({
   },
 
   register: {
-    endpoint: '/auth/sign-up',
+    endpoint: '/auth/register',
     method: 'post',
   },
 
